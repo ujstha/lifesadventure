@@ -5,19 +5,55 @@
 
 	if(isset($_POST["register"])) {
 		$cn=makeconnection();
-		$file = addslashes(file_get_contents($_FILES["ppic"]["tmp_name"]));
-		$s="INSERT INTO customer (`first_name`, `last_name`, `email_address`, `gender`, `age`, `country`, `password` , `decrypt_pass`, `profile_pic`) VALUES ('" . $_POST["fname"] . "', '" . $_POST["lname"] . "', '" . $_POST["email"] . "', '" . $_POST["gender"] . "', '" . $_POST["age"] . "', '" . $_POST["country"] . "', '" . md5($_POST["confirmpassword"]) . "', '" . $_POST["password"] . "', '$file')";
-			//md5 is hashing the password.
-		if (mysqli_query($cn,$s)) {
-			$imgMsg = 'Thank you, You\'re now signed up with email " '. $_POST["email"] .'"';
-			$imgMsgClass = 'alert-success';
-			echo "<script>document.location = 'index.php'; </script>";
+		$i = 0;
+		$target_dir = "uploads/";
+		//img
+		$target_file = $target_dir.basename($_FILES["ppic"]["name"]);
+		$uploadok = 1;
+		$imagefiletype = pathinfo($target_file, PATHINFO_EXTENSION);
+		//check if image file is a actual image or fake image
+		$check=getimagesize($_FILES["ppic"]["tmp_name"]);
+		if($check!==false) {
+			$uploadok = 1;
 		} else {
-		 	$imgMsg = 'Oops, There was a problem signing up...';
+			$imgMsg = "File is not an image.";
 			$imgMsgClass = 'alert-danger';
-			
-		}		
-		mysqli_close($cn);
+			$uploadok=0;
+		}
+		//check if file already exists
+		if(file_exists($target_file)){
+			$uploadok=1;
+		}
+		//check file size
+		if($_FILES["ppic"]["size"]>500000){
+			$uploadok=1;
+		}
+		//allow certain file formats
+		if($imagefiletype != "jpg" && $imagefiletype !="png" && $imagefiletype !="jpeg" && $imagefileype !="gif"){
+			$imgMsg = "Sorry, only jpg, jpeg, png & gif files are allowed.";
+			$imgMsgClass = 'alert-danger';
+			$uploadok=0;
+		} else {
+			if(move_uploaded_file($_FILES["ppic"]["tmp_name"], $target_file)){
+				$i = 1; 
+			} else {
+				$imgMsg = "Sorry, there was an error uploading your file.";
+				$imgMsgClass = 'alert-danger';
+			}
+		}
+		if ($i > 0) {
+			$s="INSERT INTO customer (`first_name`, `last_name`, `email_address`, `gender`, `age`, `country`, `password` , `decrypt_pass`, `profile_pic`) VALUES ('" . $_POST["fname"] . "', '" . $_POST["lname"] . "', '" . $_POST["email"] . "', '" . $_POST["gender"] . "', '" . $_POST["age"] . "', '" . $_POST["country"] . "', '" . md5($_POST["confirmpassword"]) . "', '" . $_POST["password"] . "', '" . basename($_FILES["ppic"]["name"]) . "')";
+			//md5 is hashing the password.
+			if (mysqli_query($cn,$s)) {
+				$imgMsg = 'Thank you, You\'re now signed up with email " '. $_POST["email"] .'"';
+				$imgMsgClass = 'alert-success';
+			} else {
+			 	$imgMsg = 'Oops, There was a problem signing up...';
+				$imgMsgClass = 'alert-danger';
+				
+			}		
+			mysqli_close($cn);
+		}
 	}
 ?>
 <!-- /ADD/REGISTER PAGES -->
@@ -50,10 +86,10 @@
 					<div class="form-group row">
 						<label class="col-sm-4 col-form-label d-flex">Full Name : </label> 
 						<div class="col-sm-4">
-							<input type="text" name="fname" required placeholder="First Name" class="form-control" id="fname"/>
+							<input type="text" name="fname" required placeholder="First Name" class="form-control" id="fname" maxlength="20"/>
 						</div>
 						<div class="col-sm-4">
-							<input type="text" name="lname" required placeholder="Last Name" class="form-control" id="lname"/>
+							<input type="text" name="lname" required placeholder="Last Name" class="form-control" id="lname" maxlength="20"/>
 						</div>
 					</div>
 					<div class="form-group row">
@@ -82,7 +118,7 @@
 					<div class="form-group row">
 						<label class="col-sm-4 col-form-label d-flex">Age : </label>
 						<div class="col-sm-8">
-							<input type="number" min="1" name="age" required placeholder="Enter your age" class="form-control" id="age"/>
+							<input type="number" min="1" max="120" name="age" required placeholder="Enter your age" class="form-control" id="age"/>
 						</div>
 					</div>
 					<div class="form-group row">
@@ -107,7 +143,7 @@
 					<div class="form-group row">
 						<label class="col-sm-4 col-form-label d-flex">Confirm Password : </label> 
 						<div class="col-sm-8">
-							<input type="password" name="confirmpassword" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$"   required title="Minimum eight characters, at least one uppercase letter, one lowercase letter and one number" placeholder="Please confirm your password" class="form-control" id="confirmpassword"/>
+							<input type="password" name="confirmpassword" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$" required title="Minimum eight characters, at least one uppercase letter, one lowercase letter and one number" placeholder="Please confirm your password" class="form-control" id="confirmpassword"/>
 						</div>
 					</div>
 					<div class="form-group row">
@@ -128,6 +164,8 @@
 	</div>
 </div>    
 <!-- /REGISTER PAGE -->
+<!-- jQuery-2.2.4 js -->
+<script src="js/jquery/jquery-2.2.4.min.js"></script>
 
 <script type="text/javascript">
 	$(document).ready(function(){

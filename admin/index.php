@@ -29,7 +29,7 @@
                     <!-- Tabs -->
                     <div class="nav nav-tabs" id="heroTab" role="tablist">
                         <a class="nav-item nav-link active" id="nav-adventures-tab" data-toggle="tab" href="#nav-adventures" role="tab" aria-controls="nav-adventures" aria-selected="true">Adventures</a>
-                        <a class="nav-item nav-link" id="nav-events-tab" data-toggle="tab" href="#nav-events" role="tab" aria-controls="nav-events" aria-selected="false">Events</a>
+                        <a class="nav-item nav-link" id="nav-events-tab" data-toggle="tab" href="#nav-events" role="tab" aria-controls="nav-events" aria-selected="false">Advertisements</a>
                     </div>
                     <!-- Tabs Content -->
                     <div class="tab-content" id="nav-tabContent">
@@ -46,7 +46,7 @@
                                     </a>
                                 </div>
                                 <div class="col-12 col-sm-6 col-md">
-                                    <a href="https://www.facebook.com">
+                                    <a href="list-adventures.php">
                                         <div class="single-catagory-area wow fadeInUpBig" data-wow-delay="0.2s">
                                             <div class="catagory-content">
                                                 <img src="img/core-img/icon-1.png" alt="">
@@ -60,21 +60,21 @@
                         <div class="tab-pane fade" id="nav-events" role="tabpanel" aria-labelledby="nav-events-tab">
                             <form action="#" method="get">
                                 <div class="col-12 col-sm-6 col-md">
-                                    <a href="https://www.facebook.com">
+                                    <a href="add-advertisements.php">
                                         <div class="single-catagory-area wow fadeInUpBig" data-wow-delay="0.1s">
                                             <div class="catagory-content">
                                                 <img src="img/core-img/icon-1.png" alt="">
-                                                <h6>Add Adventures</h6>                                    
+                                                <h6>Add Advertisements</h6>                                    
                                             </div>
                                         </div>
                                     </a>
                                 </div>
                                 <div class="col-12 col-sm-6 col-md">
-                                    <a href="https://www.facebook.com">
+                                    <a href="list-advertisements.php">
                                         <div class="single-catagory-area wow fadeInUpBig" data-wow-delay="0.2s">
                                             <div class="catagory-content">
                                                 <img src="img/core-img/icon-1.png" alt="">
-                                                <h6>Manage Adventures</h6>                                    
+                                                <h6>Manage Advertisements</h6>                                    
                                             </div>
                                         </div>
                                     </a>

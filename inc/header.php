@@ -1,5 +1,4 @@
-    <!-- Title -->
-    <title>lifesadventure</title>
+
 
     <!-- Favicon -->
     <link rel="icon" href="assets/logo.png">
@@ -13,6 +12,9 @@
 
     <link href="https://fonts.googleapis.com/css?family=Krub" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Cedarville+Cursive" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Tangerine">
+    <link href="https://fonts.googleapis.com/css?family=Poiret+One" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Cormorant+Upright" rel="stylesheet">
 
     <!-- Core Stylesheet -->
     <link href="style.css" rel="stylesheet">
@@ -42,6 +44,7 @@
         }
         .navbar-nav .nav-link:hover {
             border-bottom: 1px solid #7643ea;
+            color: #7643ea;
             transition: all ease .2s;
         }
         #search-btn, .dorne-add-listings-btn {
@@ -51,9 +54,26 @@
         button:hover {
             cursor: pointer;
         }
+        .dorne-add-listings-btn a {
+            color: pink;
+        }
+        a#signedin {
+            color: pink;
+        }
+        .addevent.btn {
+            border-radius: 0;
+        }
+        .modal, .modal-content, .modal-dialog {
+            border-radius: 0;
+        }
         @media only screen and (max-width: 768px) {
             .dorne-add-listings-btn a.dorne-btn {
                 margin-top: 5px;
+            }
+        }
+        @media (min-width: 375px) and (max-width: 811px) {
+            body {
+                font-size: 5px;
             }
         }
     </style>
@@ -61,6 +81,10 @@
 </head>
 
 <body>
+    <!-- Preloader -->
+    <div id="preloader">
+        <div class="dorne-load"></div>
+    </div>
     <!-- ***** Search Form Area ***** -->
     <div class="dorne-search-form d-flex align-items-center">
         <div class="container">
@@ -84,7 +108,7 @@
             <div class="row h-100">
                 <div class="col-12 h-100">
                     <nav class="h-100 navbar navbar-expand-lg">
-                        <a class="navbar-brand" href="index.php" style="font-family: 'Cedarville Cursive', cursive;">lifesadventure</a>
+                        <a class="navbar-brand" href="index.php" style="font-family: 'Tangerine', serif; font-size: 48px; color: pink;">Lifesadventure</a>
                         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#dorneNav" aria-controls="dorneNav" aria-expanded="false" aria-label="Toggle navigation"><span class="fa fa-bars"></span></button>
                         <!-- Nav -->
                         <div class="collapse navbar-collapse" id="dorneNav">
@@ -92,28 +116,20 @@
                                 <li class="nav-item">
                                     <a class="nav-link" href="index.php">Home</a>
                                 </li>
-                                <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Explore <i class="fa fa-angle-down" aria-hidden="true"></i></a>
-                                    <div class="dropdown-menu" id="dropdown-menu1" aria-labelledby="navbarDropdown">
-                                        <a class="dropdown-item" href="index.php">Home</a>
-                                        <a class="dropdown-item" href="explore.php">Explore</a>
-                                        <a class="dropdown-item" href="listing.php">Listing</a>
-                                        <a class="dropdown-item" href="single-listing.php">Single Listing</a>
-                                        <a class="dropdown-item" href="contact.php">Contact</a>
-                                    </div>
-                                </li>
-                                <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown2" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Listings <i class="fa fa-angle-down" aria-hidden="true"></i></a>
-                                    <div class="dropdown-menu" id="dropdown-menu2" aria-labelledby="navbarDropdown2">
-                                        <a class="dropdown-item" href="index.php">Home</a>
-                                        <a class="dropdown-item" href="explore.php">Explore</a>
-                                        <a class="dropdown-item" href="listing.php">Listing</a>
-                                        <a class="dropdown-item" href="single-listing.php">Single Listing</a>
-                                        <a class="dropdown-item" href="contact.php">Contact</a>
-                                    </div>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="adventures.php">Adventures</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="contact.php">Contact</a>
+                                    <a class="nav-link" href="events.php">Events</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="accommodation.php">Accommodation</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="about.php">About</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="terms.php">Policy</a>
                                 </li>
                             </ul>
                             <!-- Search btn -->
@@ -121,7 +137,7 @@
                                 <a id="search-btn" href="#"><i class="fa fa-search" aria-hidden="true"></i> Search</a>
                             </div>
                             <?php if(isset($_SESSION['email_address'])) {?>
-                                <li class="nav-item dropdown">
+                                <li class="nav-item dropdown px-0 py-0 my-0 mx-0">
                                     <!-- calling data from database -->
                                     <?php
                                         $cn = makeconnection();
@@ -132,7 +148,7 @@
                                         while ($data=mysqli_fetch_array($result)) {
                                             if ($_SESSION["email_address"] == $data["email_address"]) {
                                                 $id = $data['id'];
-                                                $propic = base64_encode($data['profile_pic']);
+                                                $propic = $data['profile_pic'];
                                                 $profname = $data['first_name'];
                                                 $prolname = $data['last_name'];
                                                 $proemail = $data['email_address'];
@@ -145,7 +161,7 @@
                                                 
                                                 <!-- /calling data from database -->
                                                 <a class="nav-link dropdown-toggle" href="#" id="signedin" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                    <span><img src="data:image/jpeg;base64,<?php echo $propic; ?>" style="width: 30px; height: 30px; border-radius: 50%;"></span> &nbsp; <?php echo $profname;?> <i class="fa fa-angle-down" aria-hidden="true"></i>
+                                                    <span><img src="./uploads/<?php echo $propic; ?>" style="width: 30px; height: 30px; border-radius: 50%;"></span> &nbsp; <?php echo $profname;?> <i class="fa fa-angle-down" aria-hidden="true"></i>
                                                 </a>
                                                 <div class="dropdown-menu dropdown-menu-right" id="signedin-menu">
                                                     <a class="dropdown-item" href="profile.php">
@@ -153,6 +169,9 @@
                                                     </a>
                                                     <a class="dropdown-item" href="edit-profile.php">
                                                         <span><i class="fas fa-user-edit" aria-hidden="true"></i></span> Edit Profile
+                                                    </a>
+                                                    <a class="dropdown-item" href="change-password.php?email=<?php echo $proemail; ?>">
+                                                        <span><i class="fas fa-key aria-hidden="true"></i></span> Change Password
                                                     </a>
                                                     <a class="dropdown-item" href="logout.php">
                                                         <span><i class="fa fa-sign-out" aria-hidden="true"></i></span> Logout
@@ -164,11 +183,14 @@
                                         mysqli_close($cn);
                                     ?>
                                 </li>
+                                <div class="dorne-add-listings-btn">
+                                    <a href="add-event.php" class="btn btn-sm btn-primary addevent">Add Event</a>
+                                </div>
                             <?php } else {?>
                                 <!-- Signin btn -->
                                 <div class="dorne-add-listings-btn">
-                                    <a href="#" class="btn dorne-btn" data-toggle="modal" data-target="#signinModal">Sign in</a>
-                                    <a href="#" class="btn dorne-btn" data-toggle="modal" data-target="#registerModal">Register</a>
+                                    <a href="#" data-toggle="modal" data-target="#signinModal">Sign In</a> &nbsp; | &nbsp;
+                                    <a href="#" data-toggle="modal" data-target="#registerModal">Register</a>
                                 </div>
                             <?php }?>
                         </div>

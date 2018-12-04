@@ -24,6 +24,8 @@
 			$cn = makeconnection();
 			$s = "DELETE FROM comment WHERE id={$comment_id}";
 			mysqli_query($cn, $s);
+			$reduce_num = "UPDATE adventure SET adventure_comment_counter = adventure_comment_counter - 1 WHERE id={$adv_id}";
+			mysqli_query($cn, $reduce_num);
 			mysqli_close($cn);
 		}
 		header('Location: adventures.php?a_id=' . $adv_id);	    

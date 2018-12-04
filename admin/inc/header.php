@@ -13,6 +13,7 @@
 
     <link href="https://fonts.googleapis.com/css?family=Krub" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Cedarville+Cursive" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Tangerine">
 
     <!-- Core Stylesheet -->
     <link href="style.css" rel="stylesheet">
@@ -66,6 +67,10 @@
 </head>
 
 <body>
+    <!-- Preloader -->
+    <div id="preloader">
+        <div class="dorne-load"></div>
+    </div>
     <!-- ***** Search Form Area ***** -->
     <div class="dorne-search-form d-flex align-items-center">
         <div class="container">
@@ -89,7 +94,7 @@
             <div class="row h-100">
                 <div class="col-12 h-100">
                     <nav class="h-100 navbar navbar-expand-lg">
-                        <a class="navbar-brand" href="index.php" style="font-family: 'Cedarville Cursive', cursive;">lifesadventure</a>
+                        <a class="navbar-brand" href="index.php" style="font-family: 'Tangerine', serif; font-size: 48px; color: pink;">Lifesadventure</a>
                         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#dorneNav" aria-controls="dorneNav" aria-expanded="false" aria-label="Toggle navigation"><span class="fa fa-bars"></span></button>
                         <!-- Nav -->
                         <div class="collapse navbar-collapse" id="dorneNav">
@@ -97,28 +102,20 @@
                                 <li class="nav-item">
                                     <a class="nav-link" href="index.php">Home</a>
                                 </li>
-                                <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Explore <i class="fa fa-angle-down" aria-hidden="true"></i></a>
-                                    <div class="dropdown-menu" id="dropdown-menu1" aria-labelledby="navbarDropdown">
-                                        <a class="dropdown-item" href="index.php">Home</a>
-                                        <a class="dropdown-item" href="explore.php">Explore</a>
-                                        <a class="dropdown-item" href="listing.php">Listing</a>
-                                        <a class="dropdown-item" href="single-listing.php">Single Listing</a>
-                                        <a class="dropdown-item" href="contact.php">Contact</a>
-                                    </div>
-                                </li>
-                                <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown2" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Listings <i class="fa fa-angle-down" aria-hidden="true"></i></a>
-                                    <div class="dropdown-menu" id="dropdown-menu2" aria-labelledby="navbarDropdown2">
-                                        <a class="dropdown-item" href="index.php">Home</a>
-                                        <a class="dropdown-item" href="explore.php">Explore</a>
-                                        <a class="dropdown-item" href="listing.php">Listing</a>
-                                        <a class="dropdown-item" href="single-listing.php">Single Listing</a>
-                                        <a class="dropdown-item" href="contact.php">Contact</a>
-                                    </div>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="../adventures.php" target="_blank">Adventures</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="contact.php">Contact</a>
+                                    <a class="nav-link" href="../events.php" target="_blank">Events</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="accommodation.php" target="_blank">Accommodation</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="../about.php" target="_blank">About</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="../terms.php" target="_blank">Policy</a>
                                 </li>
                             </ul>
                             <!-- Search btn -->

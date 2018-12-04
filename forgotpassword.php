@@ -22,6 +22,7 @@
  		}
 	}
 ?>
+
 <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
 	<div class="modal fade text-dark" id="forgotModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
 	  	<div class="modal-dialog" role="document">
@@ -34,7 +35,7 @@
 	      		</div>
 	      		<div class="modal-body">
 					<div class="form-group row">
-						<label class="col-sm-4 col-form-label">Email : </label>
+						<label class="col-sm-4 col-form-label d-flex">Email : </label>
 						<div class="col-sm-8">
 							<input type="email" name="reemail" required placeholder="Enter your email address" class="form-control" id="reemail"/>
 						</div>									
@@ -44,7 +45,7 @@
 		        	<button type="submit" style="text-transform: uppercase;" name="retrieve" class="btn dorne-btn w-80" id="retrieve">Retrieve Password</button>
 				</div>
 				<div class="d-flex justify-content-center mb-2 mt-2">
-					Suddenly, Remember the password? &nbsp; <a href="" data-target="#signinModal" data-toggle="modal" data-dismiss="modal">Sign In</a>
+					Remember the password? <a href="" data-target="#signinModal" data-toggle="modal" data-dismiss="modal">Sign In</a>
 				</div>
 	  		</div>
 		</div>

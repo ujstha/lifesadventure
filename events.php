@@ -245,7 +245,7 @@
 		                            <a href="accommodation.php" class="btn dorne-btn w-100"><i class="fas fa-hotel"></i> &nbsp; Book Accommodation</a>
 		                        </div>
 		                        <div class="listing-verify"  >
-		                            <a href="transportation.php" class="btn dorne-btn w-100"><i class="fas fa-bus-alt"></i> &nbsp; Book Transportation</a>
+		                            <a href="transportAPI/transport.php" target="_blank" class="btn dorne-btn w-100"><i class="fas fa-bus-alt"></i> &nbsp; Book Transportation</a>
 		                        </div>
 		                    </div>
 		                </div>

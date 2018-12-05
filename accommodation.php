@@ -1,4 +1,5 @@
 <?php if(!isset($_SESSION)) { session_start(); } ?>
+<?php set_time_limit(0); ?>
 
 <?php include('func/function.php'); ?>
 
@@ -40,7 +41,7 @@
     span.hp__hotel-type-badge {
     	display: none;
     }
-    h2.hp__hotel-name {
+    h2, h2.hp__hotel-name {
     	font-size: 18px;
     	text-transform: uppercase;
     }
@@ -86,13 +87,13 @@
                     <!-- Tabs -->
                     <div class="nav nav-tabs" id="heroTab" role="tablist">
                         <a class="nav-item nav-link active" id="nav-places-tab" data-toggle="tab" href="#nav-places" role="tab" aria-controls="nav-places" aria-selected="true">Places</a>
-                        <a class="nav-item nav-link" id="nav-events-tab" data-toggle="tab" href="#nav-events" role="tab" aria-controls="nav-events" aria-selected="false">Events</a>
+                        <a class="nav-item nav-link" id="nav-events-tab" href="transportAPI/transport.php" target="_blank">Transport</a>
                     </div>
                     <!-- Tabs Content -->
                     <div class="tab-content" id="nav-tabContent">
                         <div class="tab-pane fade show active" id="nav-places" role="tabpanel" aria-labelledby="nav-places-tab">
                             <h6>Search for Accommodation</h6>
-                            <form action="accommodation.php" method="post">
+                            <form action="scraped-accommodation-data.php" target="_blank" method="post">
                                 <div class="row">
                                     <div class="col-lg-12">
                                         <label>
@@ -133,32 +134,6 @@
                                 </div>
                             </form>
                         </div>
-                        <div class="tab-pane fade" id="nav-events" role="tabpanel" aria-labelledby="nav-events-tab">
-                            <h6>What are you looking for?</h6>
-                            <form action="#" method="get">
-                                <select class="custom-select">
-                                    <option selected>Your Destinations</option>
-                                    <option value="1">New York</option>
-                                    <option value="2">Latvia</option>
-                                    <option value="3">Dhaka</option>
-                                    <option value="4">Melbourne</option>
-                                    <option value="5">London</option>
-                                </select>
-                                <select class="custom-select">
-                                    <option selected>All Catagories</option>
-                                    <option value="1">Catagories 1</option>
-                                    <option value="2">Catagories 2</option>
-                                    <option value="3">Catagories 3</option>
-                                </select>
-                                <select class="custom-select">
-                                    <option selected>Price Range</option>
-                                    <option value="1">$100 - $499</option>
-                                    <option value="2">$500 - $999</option>
-                                    <option value="3">$1000 - $4999</option>
-                                </select>
-                                <button type="submit" class="btn dorne-btn"><i class="fa fa-search pr-2" aria-hidden="true"></i> Search</button>
-                            </form>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -168,129 +143,121 @@
 <!-- ***** Welcome Area End ***** -->
 
 <!-- ***** Listing Destinations Area Start ***** -->
-<section class="dorne-listing-destinations-area section-padding-100-50">
+<section class="dorne-features-restaurant-area section-padding-100-50">
     <div class="container">
         <div class="row">
-        	<?php
-				if (isset($_POST['skiphotels'])){
-					// If pressed skip hotels button
-				}
-				// set filter properties
-				if (isset($_POST['showhotels'])) { ?>
-					<div class="col-12">
-		                <div class="section-heading dark text-center">
-		                    <span></span>
-		                    <h4>Featured Accommodations</h4>
-		                    <p>Editor’s pick</p>
-		                </div>
-		            </div>
-		        </div>
-		        <div class="row">
-        		<?php 
-					$checkinday1=substr($_POST['checkin'],8,2) . "<br>";
-					$checkinmonth1=substr($_POST['checkin'],5,2) . "<br>";
-					$checkinyear1=substr($_POST['checkin'],0,4) . "<br>";
-					$checkoutday1=substr($_POST['checkout'],8,2) . "<br>";
-					$checkoutmonth1=substr($_POST['checkout'],5,2) . "<br>";
-					$checkoutyear1=substr($_POST['checkout'],0,4) . "<br>";
-					$adults1 = $_POST['adults'] . "<br>";
-					$children1 = $_POST['children'] . "<br>";
-					$city1 = $_POST['city'] . "<br>";
-					$filter1 =$_POST['filters'];
-					scrapeNotification($city1);
-					scrapeData($checkinday1,$checkinmonth1,$checkinyear1,$checkoutday1,$checkoutmonth1,$checkoutyear1,$adults1,$children1,$city1,$filter1);
-				}
-				function scrapeNotification($city){
-					//echo "<p>Showing data from booking.com in {$city}.</p>";
-
-				}
-
-				function scrapeData($checkinday,$checkinmonth,$checkinyear,$checkoutday,
-				$checkoutmonth,$checkoutyear,$adults,$children,$city,$filter) {
-					include "simple_html_dom.php";
-					$curl = curl_init();
-					$url = "https://www.booking.com/searchresults.en-gb.html?ss=" . $city . "&checkin_monthday=" . $checkinday . "&checkin_month=" . $checkinmonth . "&checkin_year=" . $checkinyear . "&checkout_monthday=" . $checkoutday . "&checkout_month=" . $checkoutmonth . "&checkout_year=" .$checkoutyear."&no_rooms=1&group_adults=".$adults ."&group_children=".$children . $filter ."/";
-
-					//echo "<a href='{$url}' target='_blank'>Go to Booking.com for more details</a>"."<br>";
-
-					curl_setopt($curl, CURLOPT_URL, $url);
-					curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-					curl_setopt($curl, CURLOPT_FOLLOWLOCATION, true);
-					$result = curl_exec($curl);
-					$html = new simple_html_dom();
-					$html->load($result);
-					curl_close($curl);
-					
-					$hotel_links = array();
-
-					if ($html != null) {
-						foreach($html->find('a[class="hotel_name_link url"]') as $link) {
-							$x = 0;
-							$hotel_links[$x] = "http://www.booking.com" . ltrim($link->href);
-						
-							$html2=new simple_html_dom();
-							$html2->load_file($hotel_links[$x]);
-							
-							if (empty($html2->find('.bui-review-score__title')[0])) {
-								$x++;
-								/*there is a relation between a hotel not being available 
-								and the review score not displaying. Therefore, if a review
-								score not set. Go to next link */
-							} else {	
-								$hotel_name = $html2->find('.hp__hotel-name')[0];
-								$hotel_link = $hotel_links[$x];
-								$hotel_address = $html2->find('.hp_address_subtitle')[0];
-								$hotel_review_title = $html2->find('.bui-review-score__title')[0];
-								$hotel_review = $html2->find('.bui-review-score__text')[0] ;
-								$hotel_rating = $html2->find('.bui-review-score__badge')[0] ;
-								$hotel_image = $html2->find('img')[3] ;
-
-								$x++;	
-								//$content = $html2->find('.hp__hotel-name')[0];
-							    //$content1 = preg_replace("/<h2[^>]+\>/i", "<p>".$html2->find('.hp__hotel-name')[0]."</p> ", $content); 
-							    //echo $content1;
-							    //$hotel_image is fetched along with img tag so below code is extracting just src from img tag
-							    //$html = $html2->find('img')[3];
-								//preg_match( '@src="([^"]+)"@' , $html, $match );
-								//$src = array_pop($match);
-								// will return /images/image.jpg
-								//echo $src;
-								?>
-								<!-- Single Features Area -->
-					            <div class="col-12 col-sm-6 col-lg-4">
-					                <div class="single-features-area mb-50">
-					                    <?php echo $hotel_image; ?>
-					                    <!-- Rating/Review title -->
-					                    <p><?php echo $hotel_rating; ?></p>
-										<p><?php echo $hotel_review_title; ?></p>
-										<p><?php echo $hotel_review; ?></p>
-					                    <div class="feature-content d-flex align-items-center justify-content-between px-3 pb-3">
-					                        <div class="feature-title">
-					                            <a href="<?php echo $hotel_link; ?>" target="_blank">
-					                            	<?php echo $hotel_name; ?>
-												</a>		
-					                            <p><?php echo $hotel_address; ?></p>
-					                            <a href="<?php echo $hotel_link; ?>" target="_blank" class="btn btn-primary btn-sm mt-2 read-more">Read More</a>
-					                        </div>
-					                    </div>
-					                </div>
-					            </div>								 
-							<?php }
-						}
-						
-					} else {
-						echo "Connection with the booking.com server cannot be established...";
-					}
-					$html->clear();
-					unset($html);
-					$html2->clear();
-					unset($html2);
-				}
-			?> 
+            <div class="col-12">
+                <div class="section-heading dark text-center">
+                    <span></span>
+                    <h4>Featured Accommodations</h4>
+                    <p>Editor’s pick</p>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 col-sm-6 col-lg-4 mt-3">
+                <!-- Single Features Area -->
+                <div class="single-features-area">
+                    <a href="http://www.booking.com/hotel/ie/jurys-inn-cork.en-gb.html?srpvid=c21da32a445301a8&amp;srepoch=1543792341&amp;room1=A,A&amp;hpos=1&amp;hapos=1&amp;dest_type=city&amp;dest_id=-1501986&amp;from=searchresults #hotelTmpl" target="_blank">
+                        <img src="https://s-ec.bstatic.com/images/hotel/max1024x768/281/28105170.jpg" data-highres="https://t-ec.bstatic.com/images/hotel/max1280x900/281/28105170.jpg" alt="Gallery image of this property">
+                    </a>
+                    <!-- Rating & Map Area -->
+                    <div class="ratings-map-area d-flex">
+                        <a class="text-light">8.5</a>
+                        <a href="http://maps.google.com/maps?daddr=Anderson's Quay, Cork, Ireland&amp;ll=" target="_blank"><i class="fas fa-map"></i></a>
+                    </div>
+                    <div class="feature-content d-flex align-items-center justify-content-between px-3 pb-3">
+                        <div class="feature-title pt-3">
+                            <h2>Jurys Inn Cork</h2>
+                            <p>Anderson's Quay, Cork, Ireland</p>
+                            <a href="http://www.booking.com/hotel/ie/jurys-inn-cork.en-gb.html?srpvid=c21da32a445301a8&amp;srepoch=1543792341&amp;room1=A,A&amp;hpos=1&amp;hapos=1&amp;dest_type=city&amp;dest_id=-1501986&amp;from=searchresults #hotelTmpl" target="_blank" class="btn btn-primary btn-sm mt-2 read-more">Read More</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-sm-6 col-lg-4 mt-3">
+                <!-- Single Features Area -->
+                <div class="single-features-area">
+                    <a href="http://www.booking.com/hotel/ie/capella-at-castlemartyr-resort.en-gb.html?srpvid=c21da32a445301a8&amp;srepoch=1543792341&amp;room1=A,A&amp;hpos=4&amp;hapos=4&amp;dest_type=city&amp;dest_id=-1501986&amp;from=searchresults #hotelTmpl" target="_blank">
+                        <img src="https://t-ec.bstatic.com/images/hotel/max1024x768/114/11476353.jpg" data-highres="https://t-ec.bstatic.com/images/hotel/max1280x900/114/11476353.jpg" alt="Gallery image of this property">
+                    </a>
+                    <!-- Rating & Map Area -->
+                    <div class="ratings-map-area d-flex">
+                        <a class="text-light">8.9</a>
+                        <a href="http://maps.google.com/maps?daddr=Main Street, Cork, Ireland&amp;ll=" target="_blank"><i class="fas fa-map"></i></a>
+                    </div>
+                    <div class="feature-content d-flex align-items-center justify-content-between px-3 pb-3">
+                        <div class="feature-title pt-3">
+                            <h2>Castlemartyr Resort Hotel</h2>
+                            <p>Main Street, Cork, Ireland</p>
+                            <a href="http://www.booking.com/hotel/ie/capella-at-castlemartyr-resort.en-gb.html?srpvid=c21da32a445301a8&amp;srepoch=1543792341&amp;room1=A,A&amp;hpos=4&amp;hapos=4&amp;dest_type=city&amp;dest_id=-1501986&amp;from=searchresults #hotelTmpl" target="_blank" class="btn btn-primary btn-sm mt-2 read-more">Read More</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-sm-6 col-lg-4 mt-3">
+                <!-- Single Features Area -->
+                <div class="single-features-area">
+                    <a href="http://www.booking.com/hotel/gb/titanic-belfast.en-gb.html?srpvid=82efa68dcee500f9&amp;srepoch=1543794076&amp;room1=A,A&amp;hpos=11&amp;hapos=11&amp;dest_type=city&amp;dest_id=-2589607&amp;from=searchresults #hotelTmpl" target="_blank">
+                        <img src="https://s-ec.bstatic.com/images/hotel/max1024x768/109/109601829.jpg" data-highres="https://t-ec.bstatic.com/images/hotel/max1280x900/109/109601829.jpg" alt="Gallery image of this property">
+                    </a>
+                    <!-- Rating & Map Area -->
+                    <div class="ratings-map-area d-flex">
+                        <a class="text-light">8.9</a>
+                        <a href="http://maps.google.com/maps?daddr=Queens Road Titanic Quarter, Belfast, BT3 9DT, United Kingdom&amp;ll=" target="_blank"><i class="fas fa-map"></i></a>
+                    </div>
+                    <div class="feature-content d-flex align-items-center justify-content-between px-3 pb-3">
+                        <div class="feature-title pt-3">
+                            <h2>Titanic Hotel Belfast</h2>
+                            <p>Queens Road Titanic Quarter, Belfast</p>
+                            <a href="http://www.booking.com/hotel/gb/titanic-belfast.en-gb.html?srpvid=82efa68dcee500f9&amp;srepoch=1543794076&amp;room1=A,A&amp;hpos=11&amp;hapos=11&amp;dest_type=city&amp;dest_id=-2589607&amp;from=searchresults #hotelTmpl" target="_blank" class="btn btn-primary btn-sm mt-2 read-more">Read More</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-sm-6 col-lg-4 mt-3">
+                <!-- Single Features Area -->
+                <div class="single-features-area">
+                    <a href="http://www.booking.com/hotel/ie/the-connacht-hotel.en-gb.html?srpvid=6380a73d2d5d00a3&amp;srepoch=1543794427&amp;room1=A,A&amp;hpos=1&amp;hapos=1&amp;dest_type=city&amp;dest_id=-1502950&amp;from=searchresults #hotelTmpl" target="_blank">
+                        <img src="https://s-ec.bstatic.com/images/hotel/max1024x768/904/90414035.jpg" data-highres="https://s-ec.bstatic.com/images/hotel/max1280x900/904/90414035.jpg" alt="Gallery image of this property">
+                    </a>
+                    <!-- Rating & Map Area -->
+                    <div class="ratings-map-area d-flex">
+                        <a class="text-light">8.5</a>
+                        <a href="http://maps.google.com/maps?daddr=Dublin Road, Galway, Ireland&amp;ll=" target="_blank"><i class="fas fa-map"></i></a>
+                    </div>
+                    <div class="feature-content d-flex align-items-center justify-content-between px-3 pb-3">
+                        <div class="feature-title pt-3">
+                            <h2>The Connacht Hotel</h2>
+                            <p>Dublin Road, Galway, Ireland</p>
+                            <a href="http://www.booking.com/hotel/ie/the-connacht-hotel.en-gb.html?srpvid=6380a73d2d5d00a3&amp;srepoch=1543794427&amp;room1=A,A&amp;hpos=1&amp;hapos=1&amp;dest_type=city&amp;dest_id=-1502950&amp;from=searchresults #hotelTmpl" target="_blank" class="btn btn-primary btn-sm mt-2 read-more">Read More</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-sm-6 col-lg-4 mt-3">
+                <!-- Single Features Area -->
+                <div class="single-features-area">
+                    <a href="http://www.booking.com/hotel/ie/flanneryshotel.en-gb.html?srpvid=6380a73d2d5d00a3&amp;srepoch=1543794427&amp;room1=A,A&amp;hpos=4&amp;hapos=4&amp;dest_type=city&amp;dest_id=-1502950&amp;from=searchresults #hotelTmpl" target="_blank">
+                        <img src="https://t-ec.bstatic.com/images/hotel/max1024x768/617/61765573.jpg" data-highres="https://t-ec.bstatic.com/images/hotel/max1280x900/617/61765573.jpg" alt="Gallery image of this property">
+                    </a>
+                    <!-- Rating & Map Area -->
+                    <div class="ratings-map-area d-flex">
+                        <a class="text-light">8.3</a>
+                        <a href="http://maps.google.com/maps?daddr=Dublin Road, . Galway, Ireland&amp;ll=" target="_blank"><i class="fas fa-map"></i></a>
+                    </div>
+                    <div class="feature-content d-flex align-items-center justify-content-between px-3 pb-3">
+                        <div class="feature-title pt-3">
+                            <h2>Flannery's Hotel</h2>
+                            <p>Dublin Road, . Galway, Ireland </p>
+                            <a href="http://www.booking.com/hotel/ie/flanneryshotel.en-gb.html?srpvid=6380a73d2d5d00a3&amp;srepoch=1543794427&amp;room1=A,A&amp;hpos=4&amp;hapos=4&amp;dest_type=city&amp;dest_id=-1502950&amp;from=searchresults #hotelTmpl" target="_blank" class="btn btn-primary btn-sm mt-2 read-more">Read More</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </section>
-<!-- ***** Listing Destinations Area End ***** -->
 						
 <script type="text/javascript">
 	$(window).scroll(function(){

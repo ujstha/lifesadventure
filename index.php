@@ -60,6 +60,11 @@
             padding-top: 25%;
         }
     }
+    @media only screen and (max-width: 767px) {
+        a.read-more {
+            font-size: 18px;
+        }
+    }
 </style>
 
 <!-- ***** Welcome Area Start ***** -->
@@ -91,13 +96,13 @@
                     <!-- Tabs -->
                     <div class="nav nav-tabs" id="heroTab" role="tablist">
                         <a class="nav-item nav-link active" id="nav-places-tab" data-toggle="tab" href="#nav-places" role="tab" aria-controls="nav-places" aria-selected="true">Places</a>
-                        <a class="nav-item nav-link" id="nav-events-tab" data-toggle="tab" href="#nav-events" role="tab" aria-controls="nav-events" aria-selected="false">Events</a>
+                        <a class="nav-item nav-link" id="nav-events-tab" href="transportAPI/transport.php" target="_blank">Transport</a>
                     </div>
                     <!-- Tabs Content -->
                     <div class="tab-content" id="nav-tabContent">
                         <div class="tab-pane fade show active" id="nav-places" role="tabpanel" aria-labelledby="nav-places-tab">
                             <h6>Search for Accommodation</h6>
-                            <form action="accommodation.php" method="post">
+                            <form action="scraped-accommodation-data.php" target="_blank" method="post">
                                 <div class="row">
                                     <div class="col-lg-12">
                                         <label>
@@ -136,32 +141,6 @@
                                         </div>
                                     </div>
                                 </div>
-                            </form>
-                        </div>
-                        <div class="tab-pane fade" id="nav-events" role="tabpanel" aria-labelledby="nav-events-tab">
-                            <h6>What are you looking for?</h6>
-                            <form action="#" method="get">
-                                <select class="custom-select">
-                                    <option selected>Your Destinations</option>
-                                    <option value="1">New York</option>
-                                    <option value="2">Latvia</option>
-                                    <option value="3">Dhaka</option>
-                                    <option value="4">Melbourne</option>
-                                    <option value="5">London</option>
-                                </select>
-                                <select class="custom-select">
-                                    <option selected>All Catagories</option>
-                                    <option value="1">Catagories 1</option>
-                                    <option value="2">Catagories 2</option>
-                                    <option value="3">Catagories 3</option>
-                                </select>
-                                <select class="custom-select">
-                                    <option selected>Price Range</option>
-                                    <option value="1">$100 - $499</option>
-                                    <option value="2">$500 - $999</option>
-                                    <option value="3">$1000 - $4999</option>
-                                </select>
-                                <button type="submit" class="btn dorne-btn"><i class="fa fa-search pr-2" aria-hidden="true"></i> Search</button>
                             </form>
                         </div>
                     </div>
@@ -258,7 +237,7 @@
                         $s="SELECT * FROM adventure LIMIT 5";
                         $result=mysqli_query($cn,$s);
                         $r=mysqli_num_rows($result); 
-                        if ($r <= 0) {
+                        if ($r <= 0) { //yaha yo hudaina yo bhaneko rating bhayeni nabhayeni adventure database ma cha bhane yo not rated message jancha so tala rating calc garepachi lekhne ho
                            echo "<h1 class='text-center text-light'>None of the adventures are rated yet....</h1>";
                         }                           
 
@@ -299,7 +278,7 @@
                                                         <h5><?php echo $title; ?></h5>
                                                     </a>
                                                     <p><?php echo $data['street']; ?>, <?php echo $data['province']; ?></p>
-                                                    <a href="adventures.php?a_id=<?php echo $id; ?>" class="read-more"><small>Read More</small></a>
+                                                    <a href="adventures.php?a_id=<?php echo $id; ?>" class="read-more">Read More</a>
                                                 </div>
                                             </div>  
                                         </div>
@@ -366,7 +345,7 @@
                                             <h5><?php echo $title; ?></h5>
                                         </a>
                                         <p><?php echo $data['street']; ?>, <?php echo $data['province']; ?></p>
-                                        <a href="adventures.php?a_id=<?php echo $id; ?>" class="read-more"><small>Read More</small></a>
+                                        <a href="adventures.php?a_id=<?php echo $id; ?>" class="read-more">Read More</a>
                                     </div>
                                 </div>  
                             </div>                               
@@ -455,13 +434,13 @@
                         <!-- Rating & Map Area -->
                         <div class="ratings-map-area d-flex">
                             <a class="text-light">8.5</a>
-                            <a href="http://maps.google.com/maps?daddr=Anderson's Quay, Cork, Ireland&amp;ll=" target="_blank"><img src="img/core-img/map.png" alt=""></a>
+                            <a href="http://maps.google.com/maps?daddr=Anderson's Quay, Cork, Ireland&amp;ll=" target="_blank"><img src="assets/map.png" alt=""></a>
                         </div>
                         <div class="feature-content d-flex align-items-center justify-content-between">
                             <div class="feature-title">
                                 <h5>Jurys Inn Cork</h5>
                                 <p>Anderson's Quay, Cork, Ireland</p>
-                                <a href="http://www.booking.com/hotel/ie/jurys-inn-cork.en-gb.html?srpvid=c21da32a445301a8&amp;srepoch=1543792341&amp;room1=A,A&amp;hpos=1&amp;hapos=1&amp;dest_type=city&amp;dest_id=-1501986&amp;from=searchresults #hotelTmpl" target="_blank" class="read-more"><small>Read More</small></a>
+                                <a href="http://www.booking.com/hotel/ie/jurys-inn-cork.en-gb.html?srpvid=c21da32a445301a8&amp;srepoch=1543792341&amp;room1=A,A&amp;hpos=1&amp;hapos=1&amp;dest_type=city&amp;dest_id=-1501986&amp;from=searchresults #hotelTmpl" target="_blank" class="read-more">Read More</a>
                             </div>
                         </div>
                     </div>
@@ -473,13 +452,13 @@
                         <!-- Rating & Map Area -->
                         <div class="ratings-map-area d-flex">
                             <a class="text-light">8.9</a>
-                            <a href="http://maps.google.com/maps?daddr=Main Street, Cork, Ireland&amp;ll=" target="_blank"><img src="img/core-img/map.png" alt=""></a>
+                            <a href="http://maps.google.com/maps?daddr=Main Street, Cork, Ireland&amp;ll=" target="_blank"><img src="assets/map.png" alt=""></a>
                         </div>
                         <div class="feature-content d-flex align-items-center justify-content-between">
                             <div class="feature-title">
                                 <h5>Castlemartyr Resort Hotel</h5>
                                 <p>Main Street, Cork, Ireland</p>
-                                <a href="http://www.booking.com/hotel/ie/capella-at-castlemartyr-resort.en-gb.html?srpvid=c21da32a445301a8&amp;srepoch=1543792341&amp;room1=A,A&amp;hpos=4&amp;hapos=4&amp;dest_type=city&amp;dest_id=-1501986&amp;from=searchresults #hotelTmpl" target="_blank" class="read-more"><small>Read More</small></a>
+                                <a href="http://www.booking.com/hotel/ie/capella-at-castlemartyr-resort.en-gb.html?srpvid=c21da32a445301a8&amp;srepoch=1543792341&amp;room1=A,A&amp;hpos=4&amp;hapos=4&amp;dest_type=city&amp;dest_id=-1501986&amp;from=searchresults #hotelTmpl" target="_blank" class="read-more">Read More</a>
                             </div>
                         </div>
                     </div>
@@ -491,13 +470,13 @@
                         <!-- Rating & Map Area -->
                         <div class="ratings-map-area d-flex">
                             <a class="text-light">8.9</a>
-                            <a href="http://maps.google.com/maps?daddr=Queens Road Titanic Quarter, Belfast, BT3 9DT, United Kingdom&amp;ll=" target="_blank"><img src="img/core-img/map.png" alt=""></a>
+                            <a href="http://maps.google.com/maps?daddr=Queens Road Titanic Quarter, Belfast, BT3 9DT, United Kingdom&amp;ll=" target="_blank"><img src="assets/map.png" alt=""></a>
                         </div>
                         <div class="feature-content d-flex align-items-center justify-content-between">
                             <div class="feature-title">
                                 <h5>Titanic Hotel Belfast</h5>
                                 <p>Queens Road Titanic Quarter, Belfast</p>
-                                <a href="http://www.booking.com/hotel/gb/titanic-belfast.en-gb.html?srpvid=82efa68dcee500f9&amp;srepoch=1543794076&amp;room1=A,A&amp;hpos=11&amp;hapos=11&amp;dest_type=city&amp;dest_id=-2589607&amp;from=searchresults #hotelTmpl" target="_blank" class="read-more"><small>Read More</small></a>
+                                <a href="http://www.booking.com/hotel/gb/titanic-belfast.en-gb.html?srpvid=82efa68dcee500f9&amp;srepoch=1543794076&amp;room1=A,A&amp;hpos=11&amp;hapos=11&amp;dest_type=city&amp;dest_id=-2589607&amp;from=searchresults #hotelTmpl" target="_blank" class="read-more">Read More</a>
                             </div>
                         </div>
                     </div>
@@ -509,13 +488,13 @@
                         <!-- Rating & Map Area -->
                         <div class="ratings-map-area d-flex">
                             <a class="text-light">8.5</a>
-                            <a href="http://maps.google.com/maps?daddr=Dublin Road, Galway, Ireland&amp;ll=" target="_blank"><img src="img/core-img/map.png" alt=""></a>
+                            <a href="http://maps.google.com/maps?daddr=Dublin Road, Galway, Ireland&amp;ll=" target="_blank"><img src="assets/map.png" alt=""></a>
                         </div>
                         <div class="feature-content d-flex align-items-center justify-content-between">
                             <div class="feature-title">
                                 <h5>The Connacht Hotel</h5>
                                 <p>Dublin Road, Galway, Ireland</p>
-                                <a href="http://www.booking.com/hotel/ie/the-connacht-hotel.en-gb.html?srpvid=6380a73d2d5d00a3&amp;srepoch=1543794427&amp;room1=A,A&amp;hpos=1&amp;hapos=1&amp;dest_type=city&amp;dest_id=-1502950&amp;from=searchresults #hotelTmpl" target="_blank" class="read-more"><small>Read More</small></a>
+                                <a href="http://www.booking.com/hotel/ie/the-connacht-hotel.en-gb.html?srpvid=6380a73d2d5d00a3&amp;srepoch=1543794427&amp;room1=A,A&amp;hpos=1&amp;hapos=1&amp;dest_type=city&amp;dest_id=-1502950&amp;from=searchresults #hotelTmpl" target="_blank" class="read-more">Read More</a>
                             </div>
                         </div>
                     </div>
@@ -527,13 +506,13 @@
                         <!-- Rating & Map Area -->
                         <div class="ratings-map-area d-flex">
                             <a class="text-light">8.3</a>
-                            <a href="http://maps.google.com/maps?daddr=Dublin Road, . Galway, Ireland&amp;ll=" target="_blank"><img src="img/core-img/map.png" alt=""></a>
+                            <a href="http://maps.google.com/maps?daddr=Dublin Road, . Galway, Ireland&amp;ll=" target="_blank"><img src="assets/map.png" alt=""></a>
                         </div>
                         <div class="feature-content d-flex align-items-center justify-content-between">
                             <div class="feature-title">
                                 <h5>Flannery's Hotel</h5>
                                 <p>Dublin Road, . Galway, Ireland </p>
-                                <a href="http://www.booking.com/hotel/ie/flanneryshotel.en-gb.html?srpvid=6380a73d2d5d00a3&amp;srepoch=1543794427&amp;room1=A,A&amp;hpos=4&amp;hapos=4&amp;dest_type=city&amp;dest_id=-1502950&amp;from=searchresults #hotelTmpl" target="_blank" class="read-more"><small>Read More</small></a>
+                                <a href="http://www.booking.com/hotel/ie/flanneryshotel.en-gb.html?srpvid=6380a73d2d5d00a3&amp;srepoch=1543794427&amp;room1=A,A&amp;hpos=4&amp;hapos=4&amp;dest_type=city&amp;dest_id=-1502950&amp;from=searchresults #hotelTmpl" target="_blank" class="read-more">Read More</a>
                             </div>
                         </div>
                     </div>

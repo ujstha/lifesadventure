@@ -67,13 +67,8 @@
             border-radius: 0;
         }
         @media only screen and (max-width: 768px) {
-            .dorne-add-listings-btn a.dorne-btn {
-                margin-top: 5px;
-            }
-        }
-        @media (min-width: 375px) and (max-width: 811px) {
-            body {
-                font-size: 5px;
+            .dorne-add-listings-btn a {
+                font-size: 18px;
             }
         }
     </style>
@@ -126,10 +121,10 @@
                                     <a class="nav-link" href="accommodation.php">Accommodation</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="about.php">About</a>
+                                    <a class="nav-link" href="transportAPI/transport.php" target="_blank">Transport</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="terms.php">Policy</a>
+                                    <a class="nav-link" href="about.php">About</a>
                                 </li>
                             </ul>
                             <!-- Search btn -->

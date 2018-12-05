@@ -2,7 +2,7 @@
     <title>lifesadventure</title>
 
     <!-- Favicon -->
-    <link rel="icon" href="assets/logo1.png">
+    <link rel="icon" href="../assets/logo.png">
 
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.2/css/all.css" integrity="sha384-/rXc/GQVaYpyDdyxK+ecHPVYJSN9bmVFBvjA/9eOB+pb3F2w2N6fc5qB9Ew5yIns" crossorigin="anonymous">
@@ -109,13 +109,13 @@
                                     <a class="nav-link" href="../events.php" target="_blank">Events</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="accommodation.php" target="_blank">Accommodation</a>
+                                    <a class="nav-link" href="../accommodation.php" target="_blank">Accommodation</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="../transportAPI/transport.php" target="_blank">Transport</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" href="../about.php" target="_blank">About</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="../terms.php" target="_blank">Policy</a>
                                 </li>
                             </ul>
                             <!-- Search btn -->

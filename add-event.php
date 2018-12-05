@@ -212,7 +212,7 @@
 								<div class="d-flex justify-content-start">
 									<div class="col-sm-9">
 										<input type="text" name="astreet" required placeholder="Street Name" class="form-control" id="astreet" title="Text only no house numbers" pattern="[a-zA-Z]*"/>
-									</div>
+									</div>  
 									<div class="col-sm-6">
 										<input type="text" name="azip" pattern="[0-9]{5}" title="Five digit zip code" required placeholder="Zip Code" class="form-control" id="azip"/>
 									</div>

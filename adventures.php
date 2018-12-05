@@ -100,7 +100,7 @@
 				cursor: pointer;
 			}
 			.carousel-item, .carouse-item img {
-				max-height: 600px;
+				max-height: 100%;
 			}
 			.commenter h6 {
 				margin: 0;
@@ -126,13 +126,55 @@
 		<?php 
 			$cn = makeconnection();
 			$adv_id = $_GET['a_id'];
-			$s_a = "SELECT image FROM adventure WHERE id={$adv_id}";
+			$s_a = "SELECT * FROM adventure WHERE id={$adv_id}";
 			$q_a = mysqli_query($cn, $s_a);
 			$r_a = mysqli_num_rows($q_a);
 			while ($data_a = mysqli_fetch_array($q_a)) {
 				$image_a = $data_a['image'];
 			?>
-		<div id="pdfcontent"> 
+			<div id="pdfcontent" style="display: none;"> 
+				<table>
+					<tr>
+						<th>Title</th>
+						<td><?php echo $data_a['title']; ?></td>
+					<tr>
+					
+					<tr>
+						<th>Description</th>
+						<td><?php echo $data_a['description']; ?></td>
+					<tr>
+					
+					<tr>
+						<th>Street</th>
+						<td><?php echo $data_a['street']; ?></td>
+					<tr>
+
+					<tr>
+						<th>Province</th>
+						<td><?php echo $data_a['province']; ?></td>
+					<tr>
+					
+					<tr>
+						<th>Zip Code</th>
+						<td><?php echo $data_a['zip']; ?></td>
+					<tr>
+					
+					<tr>
+						<th>Group Size</th>
+						<td><?php echo $data_a['group_size']; ?></td>
+					<tr>
+					
+					<tr>
+						<th>Activity Level</th>
+						<td><?php echo $data_a['activity_level']; ?></td>
+					<tr>
+					
+					<tr>
+						<th>Activity Type</th>
+						<td><?php echo $data_a['activity_type']; ?></td>
+					<tr>
+				</table>
+			</div>
 			<div class="breadcumb-area height-700 bg-img bg-overlay" style="background: url(uploads/<?php echo $image_a; ?>); background-position: center; background-size: cover;">
 			<?php }
 			?>	
@@ -279,16 +321,16 @@
 										<div class="col-md-12">
 											<section class="more-image slider">
 												<div class="slide mr-2">
-													<img class="image" data-toggle="modal" data-target="#imageModal" src="uploads/<?php echo $a_img; ?>" style="height: 250px;">
+													<img class="image" data-toggle="modal" data-target="#imageModal" src="uploads/<?php echo $a_img; ?>" style="height: 330px;">
 												</div>
 												<div class="slide mr-2">
-													<img class="image" data-toggle="modal" data-target="#imageModal" src="uploads/<?php echo $a_img1; ?>" style="height: 250px;">
+													<img class="image" data-toggle="modal" data-target="#imageModal" src="uploads/<?php echo $a_img1; ?>" style="height: 330px;">
 												</div>
 												<div class="slide mr-2">
-													<img class="image" data-toggle="modal" data-target="#imageModal" src="uploads/<?php echo $a_img2; ?>" style="height: 250px;">
+													<img class="image" data-toggle="modal" data-target="#imageModal" src="uploads/<?php echo $a_img2; ?>" style="height: 330px;">
 												</div>
 												<div class="slide mr-2">
-													<img class="image" data-toggle="modal" data-target="#imageModal" src="uploads/<?php echo $a_img3; ?>" style="height: 250px;">
+													<img class="image" data-toggle="modal" data-target="#imageModal" src="uploads/<?php echo $a_img3; ?>" style="height: 330px;">
 												</div>
 											</section>
 										</div>
@@ -527,7 +569,7 @@
 		                            			while ($adData = mysqli_fetch_array($q)) { ?>
 			                            			<div class="slide" style="position: relative;">
 														<a href="<?php echo $adData['link'];?>" target="_blank">
-															<img class="image" src="uploads/<?php echo $adData['image']; ?>" style="height: 250px;">
+															<img class="image" src="uploads/<?php echo $adData['image']; ?>" style="height: 300px;">
 														</a>
 														<a href="<?php echo $adData['link'];?>" target="_blank" style="position: absolute; top: 5px; left: 5px; background-color: #2a2a2a; color: white; padding: 5px 8px 5px 8px;">Sponsored</a>
 													</div>
@@ -565,7 +607,7 @@
 		                            			while ($adData = mysqli_fetch_array($q)) { ?>
 			                            			<div class="slide" style="position: relative;">
 														<a href="<?php echo $adData['link'];?>" target="_blank">
-															<img class="image" src="uploads/<?php echo $adData['image']; ?>" style="height: 250px;">
+															<img class="image" src="uploads/<?php echo $adData['image']; ?>" style="height: 300px;">
 														</a>
 														<a href="<?php echo $adData['link'];?>" target="_blank" style="position: absolute; top: 5px; left: 5px; background-color: #2a2a2a; color: white; padding: 5px 8px 5px 8px;">Sponsored</a>
 													</div>
@@ -579,14 +621,13 @@
 		                            <a href="accommodation.php" class="btn dorne-btn w-100"><i class="fas fa-hotel"></i> &nbsp; Book Accommodation</a>
 		                        </div>
 		                        <div class="listing-verify"  >
-		                            <a href="transportation.php" class="btn dorne-btn w-100"><i class="fas fa-bus-alt"></i> &nbsp; Book Transportation</a>
+		                            <a href="transportAPI/transport.php" target="_blank" class="btn dorne-btn w-100"><i class="fas fa-bus-alt"></i> &nbsp; Book Transportation</a>
 		                        </div>
 		                    </div>
 		                </div>
 		            </div>
 		        </div>
 		    </section>
-	    </div>
 	    <div id="pdf"></div>
 	    <!-- ***** Single Listing Area End ***** -->
 	    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/0.9.0rc1/jspdf.min.js"></script>

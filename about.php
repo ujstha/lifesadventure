@@ -139,15 +139,17 @@
 	        <div class="col-md-6 col-lg-4 col-12 col-sm-6 col-xs-12 offset-md-3 offset-lg-4 offset-sm-3">
 	            <article class="material-card Green">
 	                <h2>
-	                    <span>Christopher Walken</span>
-						<p class="text-light">The Deer Hunter</p>
+	                    <span>Nils Visser</span>
+						<p class="text-light">Leader/</p>
 	                </h2>
 	                <div class="mc-content">
 	                    <div class="img-container">
-	                        <img class="img-responsive" src="http://u.lorenzoferrara.net/marlenesco/material-card/thumb-christopher-walken.jpg">
+	                        <img class="img-responsive" src="assets/nils.jpeg">
 	                    </div>
 	                    <div class="mc-description">
-	                        He has appeared in more than 100 films and television shows, including The Deer Hunter, Annie Hall, The Prophecy trilogy, The Dogs of War ...
+	                        <strong>Main Role : </strong>Front-End Developer <br>
+	                        <strong>Secondary Role : </strong>Back-End Developer <br>
+	                        <strong>Other Role : </strong>Designer
 	                    </div>
 	                </div>
 	                <a class="mc-btn-action">
@@ -200,15 +202,17 @@
 	        <div class="col-md-6 col-lg-4 col-12 col-sm-6 col-xs-12">
 	            <article class="material-card Orange">
 	                <h2>
-	                    <span>Christopher Walken</span>
+	                    <span>Sander Krom</span>
 						<p class="text-light">The Deer Hunter</p>
 	                </h2>
 	                <div class="mc-content">
 	                    <div class="img-container">
-	                        <img class="img-responsive" src="http://u.lorenzoferrara.net/marlenesco/material-card/thumb-christopher-walken.jpg">
+	                        <img class="img-responsive" src="assets/sander.jpeg">
 	                    </div>
 	                    <div class="mc-description">
-	                        He has appeared in more than 100 films and television shows, including The Deer Hunter, Annie Hall, The Prophecy trilogy, The Dogs of War ...
+	                        <strong>Main Role : </strong>Front-End Developer <br>
+	                        <strong>Secondary Role : </strong>Back-End Developer <br>
+	                        <strong>Other Role : </strong>Designer
 	                    </div>
 	                </div>
 	                <a class="mc-btn-action">
@@ -228,15 +232,17 @@
 	        <div class="col-md-6 col-lg-4 col-12 col-sm-6 col-xs-12">
 	            <article class="material-card Orange">
 	                <h2>
-	                    <span>Christopher Walken</span>
+	                    <span>Suman Nepali</span>
 						<p class="text-light">The Deer Hunter</p>
 	                </h2>
 	                <div class="mc-content">
 	                    <div class="img-container">
-	                        <img class="img-responsive" src="http://u.lorenzoferrara.net/marlenesco/material-card/thumb-christopher-walken.jpg">
+	                        <img class="img-responsive" src="assets/suman.jpeg">
 	                    </div>
 	                    <div class="mc-description">
-	                        He has appeared in more than 100 films and television shows, including The Deer Hunter, Annie Hall, The Prophecy trilogy, The Dogs of War ...
+	                        <strong>Main Role : </strong>Front-End Developer <br>
+	                        <strong>Secondary Role : </strong>Back-End Developer <br>
+	                        <strong>Other Role : </strong>Designer
 	                    </div>
 	                </div>
 	                <a class="mc-btn-action">
@@ -256,15 +262,17 @@
 	        <div class="col-md-6 col-lg-4 col-12 col-sm-6 col-xs-12">
 	            <article class="material-card Orange">
 	                <h2>
-	                    <span>Christopher Walken</span>
+	                    <span>Johannes Fahringer</span>
 						<p class="text-light">The Deer Hunter</p>
 	                </h2>
 	                <div class="mc-content">
 	                    <div class="img-container">
-	                        <img class="img-responsive" src="http://u.lorenzoferrara.net/marlenesco/material-card/thumb-christopher-walken.jpg">
+	                        <img class="img-responsive" src="assets/johannes.jpeg">
 	                    </div>
 	                    <div class="mc-description">
-	                        He has appeared in more than 100 films and television shows, including The Deer Hunter, Annie Hall, The Prophecy trilogy, The Dogs of War ...
+	                        <strong>Main Role : </strong>Front-End Developer <br>
+	                        <strong>Secondary Role : </strong>Back-End Developer <br>
+	                        <strong>Other Role : </strong>Designer
 	                    </div>
 	                </div>
 	                <a class="mc-btn-action">
@@ -284,15 +292,17 @@
 	        <div class="col-md-6 col-lg-4 col-12 col-sm-6 col-xs-12">
 	            <article class="material-card Orange">
 	                <h2>
-	                    <span>Christopher Walken</span>
+	                    <span>Zixuan Chen</span>
 						<p class="text-light">The Deer Hunter</p>
 	                </h2>
 	                <div class="mc-content">
 	                    <div class="img-container">
-	                        <img class="img-responsive" src="http://u.lorenzoferrara.net/marlenesco/material-card/thumb-christopher-walken.jpg">
+	                        <img class="img-responsive" src="assets/zixuan.jpeg">
 	                    </div>
 	                    <div class="mc-description">
-	                        He has appeared in more than 100 films and television shows, including The Deer Hunter, Annie Hall, The Prophecy trilogy, The Dogs of War ...
+	                        <strong>Main Role : </strong>Front-End Developer <br>
+	                        <strong>Secondary Role : </strong>Back-End Developer <br>
+	                        <strong>Other Role : </strong>Designer
 	                    </div>
 	                </div>
 	                <a class="mc-btn-action">
@@ -312,15 +322,17 @@
 	        <div class="col-md-6 col-lg-4 col-12 col-sm-6 col-xs-12">
 	            <article class="material-card Orange">
 	                <h2>
-	                    <span>Christopher Walken</span>
+	                    <span>Jenny K. Kristiansen</span>
 						<p class="text-light">The Deer Hunter</p>
 	                </h2>
 	                <div class="mc-content">
 	                    <div class="img-container">
-	                        <img class="img-responsive" src="http://u.lorenzoferrara.net/marlenesco/material-card/thumb-christopher-walken.jpg">
+	                        <img class="img-responsive" src="assets/jenny.jpeg">
 	                    </div>
 	                    <div class="mc-description">
-	                        He has appeared in more than 100 films and television shows, including The Deer Hunter, Annie Hall, The Prophecy trilogy, The Dogs of War ...
+	                        <strong>Main Role : </strong>Front-End Developer <br>
+	                        <strong>Secondary Role : </strong>Back-End Developer <br>
+	                        <strong>Other Role : </strong>Designer
 	                    </div>
 	                </div>
 	                <a class="mc-btn-action">

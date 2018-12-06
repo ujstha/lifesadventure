@@ -38,6 +38,12 @@
             color: #2a2a2a;
             line-height: 1.3;
         }
+        .navbar-expand-xl .navbar-nav .nav-link {
+            padding-right: 15px;
+            padding-left: 15px;
+            color: #fff;
+            font-size: 15px;
+        }
         .nav-link {
             text-transform: uppercase;
             border-bottom: -2px solid #7643ea;
@@ -71,6 +77,101 @@
                 font-size: 18px;
             }
         }
+        @media (min-width: 1024px) and (max-width: 1365px) {
+            .navbar-toggler {
+                border: 2px solid #fff;
+                color: #fff;
+                margin: 37px 0;
+                -webkit-transition-duration: 500ms;
+                        transition-duration: 500ms;
+            }
+            .sticky .navbar-toggler {
+                margin: 17px 0
+            }
+            #dorneNav {
+                padding: 30px;
+                background-color: #341a79;
+                box-shadow: 1px 9px 10px rgba(255, 255, 255, 0.15);
+                border-radius: 0 0 3px 3px
+            }
+            .dorne-search-btn > a,
+            .dorne-signin-btn > a {
+                margin-right: 0;
+                margin-left: 15px;
+                padding: 10px 0;
+            }
+            .hero-content h2 {
+                color: #fff;
+                font-size: 42px;
+            }
+            .hero-social-btn {
+                bottom: 140px;
+                left: 30px;
+                z-index: 0;
+            }
+            .hero-search-form .tab-content .tab-pane form .custom-select {
+                padding: 0 10px;
+                margin-right: 5px;
+            }
+            .dorne-btn {
+                min-width: 150px;
+            }
+            .single-catagory-area .catagory-content h6 {
+                font-size: 13px;
+            }
+            .about-content h2 {
+                font-size: 36px;
+            }
+            .single-catagory-area {
+                padding: 40px 15px;
+            }
+            .clients-logo img {
+                padding: 0 15px;
+            }
+            .explore-search-area {
+                -webkit-box-flex: 0;
+                    -ms-flex: 0 0 60%;
+                        flex: 0 0 60%;
+                width: 60%;
+            }
+            .explore-map-area {
+                -webkit-box-flex: 0;
+                    -ms-flex: 0 0 40%;
+                        flex: 0 0 40%;
+                width: 40%;
+            }
+            .explore-search-form,
+            .explore-search-result {
+                -webkit-box-flex: 0;
+                    -ms-flex: 0 0 50%;
+                        flex: 0 0 50%;
+                width: 50%;
+            }
+            .explore-search-form {
+                padding: 30px 15px;
+            }
+            .explore-search-result {
+                padding: 0 15px;
+            }
+            .explore-search-form h6 {
+                font-size: 14px;
+            }
+            .explore-search-form .tab-content .tab-pane form .custom-select {
+                margin-bottom: 15px;
+            }
+            .listing-sidebar {
+                margin-top: 100px;
+            }
+            .contact-form-area {
+                padding: 50px 20px;
+            }
+            .single-contact-info:first-child {
+                margin-right: 0;
+            }
+            .contact-text h4 {
+                font-size: 20px;
+            }
+        }
     </style>
 
 </head>
@@ -102,7 +203,7 @@
         <div class="container-fluid h-100">
             <div class="row h-100">
                 <div class="col-12 h-100">
-                    <nav class="h-100 navbar navbar-expand-lg">
+                    <nav class="h-100 navbar navbar-expand-xl">
                         <a class="navbar-brand" href="index.php" style="font-family: 'Tangerine', serif; font-size: 48px; color: pink;">Lifesadventure</a>
                         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#dorneNav" aria-controls="dorneNav" aria-expanded="false" aria-label="Toggle navigation"><span class="fa fa-bars"></span></button>
                         <!-- Nav -->

@@ -100,7 +100,7 @@
 				cursor: pointer;
 			}
 			.carousel-item, .carouse-item img {
-				max-height: 100%;
+				height: 100%;
 			}
 			.commenter h6 {
 				margin: 0;
@@ -285,7 +285,16 @@
 
 											<div class="listing-title">
 					                            <h3 class="text-uppercase"><?php echo $data['title']; ?></h3>
-					                            <a href="adventures.php?filter%5B%5D=<?php echo $data['group_size']; ?>"><h6><?php echo $data['group_size']; ?> Type</h6></a>
+					                            <a href="adventures.php?filter%5B%5D=<?php echo $data['group_size']; ?>"><h6>Type : <?php echo $data['group_size']; ?></h6></a>
+					                            <a><strong>Level : </strong><?php echo $data['activity_level']; ?></a>
+					                            <div class="row mt-3">
+					                            	<div class="col-lg-12">
+					                            		<h6>Activity Type : </h6>
+					                            	</div>
+					                            	<div class="col-lg-4 mt-2">
+					                            		<?php echo $data['activity_type']; ?>
+					                            	</div>
+					                            </div>
 					                        </div>
 
 					    					<?php }
@@ -347,16 +356,16 @@
 														<div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
 															<div class="carousel-inner">
 																<div class="carousel-item active">
-																	<img class="d-block w-100" src="uploads/<?php echo $a_img; ?>" alt="First slide">
+																	<img class="d-block w-100" src="uploads/<?php echo $a_img; ?>" alt="First slide" style="height: 100%; max-height: 900px;">
 																</div>
 																<div class="carousel-item">
-																	<img class="d-block w-100" src="uploads/<?php echo $a_img1; ?>" alt="Second slide">
+																	<img class="d-block w-100" src="uploads/<?php echo $a_img1; ?>" alt="Second slide" style="height: 100%; max-height: 900px;">
 																</div>
 																<div class="carousel-item">
-																	<img class="d-block w-100" src="uploads/<?php echo $a_img2; ?>" alt="Second slide">
+																	<img class="d-block w-100" src="uploads/<?php echo $a_img2; ?>" alt="Second slide" style="height: 100%; max-height: 900px;">
 																</div>
 																<div class="carousel-item">
-																	<img class="d-block w-100" src="uploads/<?php echo $a_img3; ?>" alt="Second slide">
+																	<img class="d-block w-100" src="uploads/<?php echo $a_img3; ?>" alt="Second slide" style="height: 100%; max-height: 900px;">
 																</div>
 															</div>
 															<a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
@@ -713,7 +722,7 @@
 	    	}
 	    	.editor.price-start p {
 		        position: absolute;
-		        top: 210px !important;
+		        top: 300px !important;
 		        left: 0px;
 		        /*background-color: #2a2a2a;*/
 		        background-color: #30c0a3;
@@ -798,6 +807,9 @@
 												<label for="couple">
 													<input type="checkbox" value="Couple" name="filter[]" id="couple" /> Couple
 												</label>
+												<label for="any">
+													<input type="checkbox" value="Any" name="filter[]" id="any" /> All of above
+												</label>
 											</div>
 										</div>
 									</div>
@@ -832,7 +844,7 @@
 													<input type="checkbox" value="Shooting" name="filter[]" id="shooting" /> Shooting
 												</label>
 												<label for="wateractivities">
-													<input type="checkbox" value="Water Acitvities" name="filter[]" id="wateractivities" /> Water Acitvities
+													<input type="checkbox" value="Water Activities" name="filter[]" id="wateractivities" /> Water Activities
 												</label>
 												<label for="wilderness">
 													<input type="checkbox" value="Wilderness" name="filter[]" id="wilderness" /> Wilderness
@@ -1098,6 +1110,12 @@
 		<section class="bg-img bg-overlay-9" style="background-image: url(assets/ireland.jpg); background-attachment: fixed; padding-top: 10em; padding-bottom: 5em;">	            
 			<div class="container-fluid">
 				<div class="row">
+					<?php if ($msgl != ''): ?>
+	                    <div class="alert <?php echo $msglClass; ?> text-center col-lg-10 offset-lg-1 alert-dismissable" id="flash-msg">
+	                        <?php echo $msgl; ?>
+	                        <button aria-hidden="true" data-dismiss="alert" class="close" type="button">&times;</button>
+	                    </div>
+	                <?php endif; ?>
 					<div class="col-lg-3 ftco-animate">
 						<div class="sidebar-wrap bg-light ftco-animate">
 							<h3 class="heading mb-4">Find Adventures</h3>
@@ -1126,6 +1144,9 @@
 												</label>
 												<label for="couple">
 													<input type="checkbox" value="Couple" name="filter[]" id="couple" /> Couple
+												</label>
+												<label for="any">
+													<input type="checkbox" value="Any" name="filter[]" id="any" /> All of above
 												</label>
 											</div>
 										</div>
@@ -1161,7 +1182,7 @@
 													<input type="checkbox" value="Shooting" name="filter[]" id="shooting" /> Shooting
 												</label>
 												<label for="wateractivities">
-													<input type="checkbox" value="Water Acitvities" name="filter[]" id="wateractivities" /> Water Acitvities
+													<input type="checkbox" value="Water Activities" name="filter[]" id="wateractivities" /> Water Activities
 												</label>
 												<label for="wilderness">
 													<input type="checkbox" value="Wilderness" name="filter[]" id="wilderness" /> Wilderness

@@ -1,7 +1,7 @@
 CREATE TABLE adventure (
     id               INTEGER NOT NULL AUTO_INCREMENT,
     title            VARCHAR(50)  NOT NULL,
-    description      VARCHAR(200) NOT NULL,
+    description      VARCHAR(1000) NOT NULL,
     street           VARCHAR(100) NOT NULL,
     province         VARCHAR(100) NOT NULL,
     zip              VARCHAR(50)  NOT NULL,
@@ -79,7 +79,7 @@ CREATE TABLE advertisement (
 CREATE TABLE event (
     id               INTEGER NOT NULL AUTO_INCREMENT,
     title            VARCHAR(50)  NOT NULL,
-    description      VARCHAR(200) NOT NULL,
+    description      VARCHAR(1000) NOT NULL,
     street           VARCHAR(100) NOT NULL,
     province         VARCHAR(100) NOT NULL,
     zip              VARCHAR(50)  NOT NULL,

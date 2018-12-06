@@ -65,7 +65,7 @@
 				}
 			</style>
 			<!-- ***** Breadcumb Area Start ***** -->
-		    <div class="breadcumb-area height-700 bg-img bg-overlay" style="background-image: url(uploads/<?php echo $event_data['image']; ?>); background-attachment: fixed; background-position: center;">
+		    <div class="breadcumb-area height-700 bg-img bg-overlay" style="background-image: url(uploads/<?php echo $event_data['image1']; ?>); background-attachment: fixed; background-position: center;">
 		        <div class="container">
 		            <div class="row">
 		                <div class="col-12">
@@ -369,145 +369,13 @@
 		<section class="bg-img bg-overlay-9" style="background-image: url(assets/ireland1.jpg); background-attachment: fixed; padding-top: 10em; padding-bottom: 5em;">	            
 			<div class="container-fluid">
 				<div class="row">
-					<div class="col-lg-3 ftco-animate">
-						<div class="sidebar-wrap bg-light ftco-animate">
-							<h3 class="heading mb-4">Find Adventures</h3>
-							<form action="adventures.php" method="get">
-								<div class="fields">
-									<div class="form-group">
-										<div class="select-wrap one-third">
-											<div class="selectBox" onclick="showCheckboxes()">
-												<select>
-													<option>Filter by Group size</option>
-												</select>
-												<div class="overSelect"></div>
-											</div>
-											<div id="checkboxes">
-												<label for="family">
-													<input type="checkbox" value="Family" name="filter[]" id="family" /> Family
-												</label>
-												<label for="solo">
-													<input type="checkbox" value="Solo" name="filter[]" id="solo" /> Solo
-												</label>
-												<label for="duo">
-													<input type="checkbox" value="Duo" name="filter[]" id="duo" /> Duo
-												</label>
-												<label for="group">
-													<input type="checkbox" value="Group" name="filter[]" id="group" /> Group
-												</label>
-												<label for="couple">
-													<input type="checkbox" value="Couple" name="filter[]" id="couple" /> Couple
-												</label>
-											</div>
-										</div>
-									</div>
-									<div class="form-group">
-										<div class="select-wrap one-third">
-											<div class="selectBox1" onclick="showCheckboxes1()">
-												<select>
-													<option>Filter by Activity Type</option>
-												</select>
-												<div class="overSelect1"></div>
-											</div>
-											<div id="checkboxes1">
-												<label for="notspecified">
-													<input type="checkbox" value="Not Specified" name="filter[]" id="notspecified" /> Not Specified
-												</label>
-												<label for="cycling">
-													<input type="checkbox" value="Cycling" name="filter[]" id="cycling" /> Cycling
-												</label>
-												<label for="walking">
-													<input type="checkbox" value="Walking" name="filter[]" id="walking" /> Walking
-												</label>
-												<label for="driving">
-													<input type="checkbox" value="Driving" name="filter[]" id="driving" /> Driving
-												</label>
-												<label for="horseriding">
-													<input type="checkbox" value="Horse Riding" name="filter[]" id="horseriding" /> Horse Riding
-												</label>
-												<label for="flying">
-													<input type="checkbox" value="Flying" name="filter[]" id="flying" /> Flying
-												</label>
-												<label for="shooting">
-													<input type="checkbox" value="Shooting" name="filter[]" id="shooting" /> Shooting
-												</label>
-												<label for="wateractivities">
-													<input type="checkbox" value="Water Acitvities" name="filter[]" id="wateractivities" /> Water Acitvities
-												</label>
-												<label for="wilderness">
-													<input type="checkbox" value="Wilderness" name="filter[]" id="wilderness" /> Wilderness
-												</label>
-												<label for="climbing">
-													<input type="checkbox" value="Climbing" name="filter[]" id="climbing" /> Climbing
-												</label>
-												<label for="festivals">
-													<input type="checkbox" value="Festivals" name="filter[]" id="festivals" /> Festivals
-												</label>
-												<label for="museums">
-													<input type="checkbox" value="Museums" name="filter[]" id="museums" /> Museums
-												</label>
-												<label for="music">
-													<input type="checkbox" value="Music" name="filter[]" id="music" /> Music
-												</label>
-											</div>
-										</div>
-									</div>
-									<div class="form-group">
-										<div class="select-wrap one-third">
-											<div class="selectBox2" onclick="showCheckboxes2()">
-												<select>
-													<option>Filter by Acitvity Level</option>
-												</select>
-												<div class="overSelect2"></div>
-											</div>
-											<div id="checkboxes2">
-												<label for="nspecified">
-													<input type="checkbox" value="Not Specified" name="filter[]" id="nspecified" /> Not Specified
-												</label>
-												<label for="high">
-													<input type="checkbox" value="High" name="filter[]" id="high" /> High
-												</label>
-												<label for="medium">
-													<input type="checkbox" value="Medium" name="filter[]" id="medium" /> Medium
-												</label>
-												<label for="low">
-													<input type="checkbox" value="Low" name="filter[]" id="low" /> Low
-												</label>
-											</div>
-										</div>
-									</div>
-									<div class="form-group">
-										<div class="select-wrap one-third">
-											<div class="selectBox3" onclick="showCheckboxes3()">
-												<select>
-													<option>Filter by Province</option>
-												</select>
-												<div class="overSelect3"></div>
-											</div>
-											<div id="checkboxes3">
-												<label for="leinster">
-													<input type="checkbox" value="Leinster" name="filter[]" id="leinster" /> Leinster
-												</label>
-												<label for="munster">
-													<input type="checkbox" value="Munster" name="filter[]" id="munster" /> Munster
-												</label>
-												<label for="connacht">
-													<input type="checkbox" value="Connacht" name="filter[]" id="connacht" /> Connacht
-												</label>
-												<label for="ulster">
-													<input type="checkbox" value="Ulster" name="filter[]" id="ulster" /> Ulster
-												</label>
-											</div>
-										</div>
-									</div>
-									<div class="form-group">
-										<input type="submit" value="Search" class="btn btn-primary py-3 px-5">
-									</div>
-								</div>
-							</form>
-						</div>
-					</div>
-					<div class="col-lg-9">
+					<div class="col-lg-10 offset-lg-1">
+						<?php if ($msgl != ''): ?>
+		                    <div class="alert <?php echo $msglClass; ?> text-center col-lg-10 offset-lg-1 alert-dismissable" id="flash-msg">
+		                        <?php echo $msgl; ?>
+		                        <button aria-hidden="true" data-dismiss="alert" class="close" type="button">&times;</button>
+		                    </div>
+		                <?php endif; ?>
 						<div class="row">
 							<?php 
 								$cn = makeconnection();

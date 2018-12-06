@@ -448,6 +448,28 @@
 	                            	<h5><?php echo $a_street; ?>, <?php echo $a_zip; ?> <?php echo $a_province; ?></h5>
 	                            </a>
 	                        </div>
+	                        <div class="listing-menu-area" style="margin-top: 60px;">
+		                        <h4 style="margin-bottom: 30px;">Advertisement</h4>
+		                        <div style="position: relative;" id="advertisement">
+		                        	<?php 
+	                            		$cn = makeconnection();
+	                            		$s = "SELECT * FROM advertisement";
+	                            		$q = mysqli_query($cn, $s);
+	                            		if (mysqli_num_rows($q) <= 0) {
+	                            			echo "<h1>No Advertisement....</h1>";
+	                            		} else {
+	                            			while ($adData = mysqli_fetch_array($q)) { ?>
+		                            			<div class="slide" style="position: relative;">
+													<a href="<?php echo $adData['link'];?>" target="_blank">
+														<img class="image" src="../uploads/<?php echo $adData['image']; ?>" style="height: 300px;">
+													</a>
+													<a href="<?php echo $adData['link'];?>" target="_blank" style="position: absolute; top: 5px; left: 5px; background-color: #2a2a2a; color: white; padding: 5px 8px 5px 8px;">Sponsored</a>
+												</div>
+		                            		<?php }
+	                            		}
+	                            	?>
+		                        </div>
+		                    </div>
 	                    </div>
 	                </div>
 
@@ -465,35 +487,35 @@
 	                       	
 	                        <!-- Book A Table Widget -->
 	                        <div class="book-a-table-widget mt-50">
-	                            <h6>Book A Table</h6>
-	                            <form action="#" method="get">
-	                                <select class="custom-select" id="destinations">
-	                                <option selected>Who will be arriving</option>
-	                                <option value="1">New York</option>
-	                                <option value="2">Latvia</option>
-	                                <option value="3">Dhaka</option>
-	                                <option value="4">Melbourne</option>
-	                                <option value="5">London</option>
-	                            </select>
-	                                <select class="custom-select" id="catagories">
-	                                <option selected>Guest 1</option>
-	                                <option value="1">Guest 2</option>
-	                                <option value="3">Guest 3</option>
-	                                <option value="3">Guest 4</option>
-	                            </select>
-	                                <button type="submit" class="btn dorne-btn bg-white text-dark"><i class="fa fa-search pr-2" aria-hidden="true"></i> Search</button>
-	                            </form>
+	                            <h6>Advertisement</h6>
+	                            <section class="advertise slider">
+	                            	<?php 
+	                            		$cn = makeconnection();
+	                            		$s = "SELECT * FROM advertisement";
+	                            		$q = mysqli_query($cn, $s);
+	                            		if (mysqli_num_rows($q) <= 0) {
+	                            			echo "<h3>No Advertisement....</h3>";
+	                            		} else {
+	                            			while ($adData = mysqli_fetch_array($q)) { ?>
+		                            			<div class="slide" style="position: relative;">
+													<a href="<?php echo $adData['link'];?>" target="_blank">
+														<img class="image" src="../uploads/<?php echo $adData['image']; ?>" style="height: 300px;">
+													</a>
+													<a href="<?php echo $adData['link'];?>" target="_blank" style="position: absolute; top: 5px; left: 5px; background-color: #2a2a2a; color: white; padding: 5px 8px 5px 8px;">Sponsored</a>
+												</div>
+		                            		<?php }
+	                            		}
+	                            	?>
+								</section>
+	                        </div>
+
+	                        <div class="listing-verify mt-50" style="border-bottom: 1px solid darkgrey;">
+	                            <a href="accommodation.php" target="_blank" class="btn dorne-btn w-100"><i class="fas fa-hotel"></i> &nbsp; Book Accommodation</a>
+	                        </div>
+	                        <div class="listing-verify"  >
+	                            <a href="transportAPI/transport.php" target="_blank" class="btn dorne-btn w-100"><i class="fas fa-bus-alt"></i> &nbsp; Book Transportation</a>
 	                        </div>
 	                    </div>
-	                </div>
-	                <div class="col-lg-12">
-	                	<div class="listing-menu-area" style="margin-top: 60px;">
-                            <h4 style="margin-bottom: 30px;">Advertisement</h4>
-                            <div style="position: relative;" id="advertisement">
-                            	<img src="assets/river.jpg" style="height: 350px; width: 100%;">
-                            	<p>Okey Dokey</p>
-                            </div>
-                        </div>
 	                </div>
 	            </div>
 	        </div>
@@ -501,6 +523,67 @@
 	    </div>
 	    <div id="pdf"></div>
 	    <!-- ***** Single Listing Area End ***** -->
+	    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/0.9.0rc1/jspdf.min.js"></script>
+	    <script>
+			var doc = new jsPDF();
+			var specialElementHandlers = {
+				'#pdf': function (element, renderer) {
+					return true;
+				}
+			};
+
+			$('#downloadPDF').click(function () {   
+				doc.fromHTML($('#pdfcontent').html(), 15, 15, {
+					'width': 1000,
+						'elementHandlers': specialElementHandlers
+				});
+				doc.save('<?php echo $a_title; ?>.pdf');
+			});
+		</script>
+		<script type="text/javascript">
+			$(document).ready(function(){
+			    $('.more-image').slick({
+			        slidesToShow: 2,
+			        slidesToScroll: 1,
+			        autoplay: true,
+			        autoplaySpeed: 3000,
+			        arrows: false,
+			        dots: false,
+			        pauseOnHover: true,
+			        responsive: [{
+			            breakpoint: 768,
+			            settings: {
+			                slidesToShow: 1
+			            }
+			        }, {
+			            breakpoint: 520,
+			            settings: {
+			                slidesToShow: 1
+			            }
+			        }]
+			    });
+			    $('.advertise').slick({
+			        slidesToShow: 1,
+			        slidesToScroll: 1,
+			        autoplay: true,
+			        autoplaySpeed: 3000,
+			        arrows: false,
+			        dots: false,
+			        pauseOnHover: true,
+			        responsive: [{
+			            breakpoint: 768,
+			            settings: {
+			                slidesToShow: 1
+			            }
+			        }, {
+			            breakpoint: 520,
+			            settings: {
+			                slidesToShow: 1
+			            }
+			        }]
+			    });
+			});
+		</script>
 	<?php }
 ?>
 

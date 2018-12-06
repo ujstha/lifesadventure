@@ -117,7 +117,7 @@
 	.post-image {
 		width: 100%;
 	}
-	@media only screen and (max-width: 768px) {
+	@media only screen and (max-width: 767px) {
 		.profile-card-2 .profile {
 			left: 15%;
 			width: 75px;
@@ -145,6 +145,32 @@
 		}
 		.col-md-4 {
 			display: inline-block;
+		}
+	}
+	.address {
+		position: absolute; 
+		right: 5px; 
+		top: 2px;
+	}
+	.activity {
+		position: absolute;
+		bottom: 0;
+	}
+	.activity p {
+		border: 1px solid darkgrey;
+		background-color: white;
+		padding: 2px; 
+		font-size: 17px;
+	}
+	p.level {
+		margin-bottom: 2px;
+	}
+	@media only screen and (max-width: 767px)  {
+		.address {
+			position: relative;
+		}
+		.activity p {
+			font-size: 18px;
 		}
 	}
 </style>
@@ -249,8 +275,12 @@
 												</div>
 											</div>
 											<div style="border-bottom: 1px solid lightgrey;">
-												<div class="col-md-6 offset-md-3 py-2">
+												<div class="col-md-6 offset-md-3 py-2" style="position: relative;">
 													<img class="image" src="uploads/<?php echo $data['image']; ?>" data-toggle="modal" data-target="#postimageModal" style="height: auto; max-height: 400px; width: 100%;">
+													<div class="activity">
+														<p class="level"><strong>Level : </strong><?php echo $data['activity_level']; ?></p>
+														<p class="type"><strong>Type : </strong><?php echo $data['activity_type']; ?></p>
+													</div>
 												</div>
 											</div>
 											<!-- Modal -->
@@ -290,6 +320,16 @@
 														</div>
 													</div>
 												</div>
+											</div>
+											<div class="event-title mx-4 mt-3" style="position: relative;">
+												<a href="events.php?e_id=<?php echo $data['id']; ?>"><h4 class="text-uppercase"><?php echo $data['title']; ?></h4></a>
+												<h6><?php echo $data['group_size']; ?> Type</h6>
+												<a target="_blank" href="http://maps.google.com/maps?daddr=<?php echo $data['street']; ?>&amp;ll=">
+													<h6 class="address"><?php echo $data['street']; ?>
+														<br>
+														<?php echo $data['zip']; ?>, Ireland
+													</h6>
+												</a>
 											</div>
 											<div class="mt-2 mx-4 description">
 												<p><?php echo $data['description']; ?></p>

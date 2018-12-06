@@ -172,6 +172,10 @@
 		padding: 5px;
 		height: 40px;
 	}
+	.form-group .form-control {
+		border-radius: 0;
+		border: 0;
+	}
 </style>
 
 <section class="bg-img bg-overlay" style="background-image: url(assets/ireland1.jpg); background-attachment: fixed; padding-top: 10em; padding-bottom: 5em;">
@@ -211,10 +215,10 @@
 								<label class="col-sm-4 col-form-label d-flex">Address : </label>
 								<div class="d-flex justify-content-start">
 									<div class="col-sm-9">
-										<input type="text" name="astreet" required placeholder="Street Name" class="form-control" id="astreet" title="Text only no house numbers" pattern="[a-zA-Z]*"/>
+										<input type="text" name="astreet" required placeholder="Street Name" class="form-control" id="astreet" />
 									</div>  
 									<div class="col-sm-6">
-										<input type="text" name="azip" pattern="[0-9]{5}" title="Five digit zip code" required placeholder="Zip Code" class="form-control" id="azip"/>
+										<input type="text" name="azip" required placeholder="Zip Code" class="form-control" id="azip"/>
 									</div>
 								</div>
 							</div>

@@ -38,36 +38,7 @@
 <section class="bg-img" style="background-image: url(assets/sunset.jpg); background-attachment: fixed; padding-top: 10em; padding-bottom: 5em;">	            
 	<div class="container-fluid">
 		<div class="row">
-			<div class="col-lg-3 ftco-animate">
-				<div class="sidebar-wrap bg-light ftco-animate">
-					<h3 class="heading mb-4">Find Adventures</h3>
-					<form action="#">
-						<div class="fields">
-							<div class="form-group">
-								<input type="text" class="form-control" placeholder="Destination, City">
-							</div>
-							<div class="form-group">
-								<div class="select-wrap one-third">
-									<div class="icon">
-										<span class="fas fa-angle-down"></span>
-									</div>
-									<select name="" id="" class="form-control" placeholder="Keyword search">
-										<option value="">Select Location</option>
-										<option value="">San Francisco USA</option>
-										<option value="">Berlin Germany</option>
-										<option value="">Lodon United Kingdom</option>
-										<option value="">Paris Italy</option>
-									</select>
-								</div>
-							</div>
-							<div class="form-group">
-								<input type="submit" value="Search" class="btn btn-primary py-3 px-5">
-							</div>
-						</div>
-					</form>
-				</div>
-			</div>
-			<div class="col-lg-9">
+			<div class="col-lg-8 offset-lg-2">
 				<div class="row">
 					<?php 
 						$cn = makeconnection();

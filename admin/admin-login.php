@@ -1,4 +1,4 @@
-<?php session_start(); ?>
+<?php if(!isset($_SESSION)) { session_start(); } ?>
 <?php include('inc/head.php'); ?>
 <?php include('func/function.php'); ?>
 
@@ -18,7 +18,6 @@
 		$data=mysqli_fetch_array($q);
 		mysqli_close($cn);
 		if($r>0) {
-			$_SESSION["adminuser"] = $_POST["username"];
 			$_SESSION['loginstatus']="yes";	
 			echo "<script type='text/javascript'> document.location = 'index.php'; </script>";
 		} else {

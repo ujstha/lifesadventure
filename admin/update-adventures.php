@@ -299,10 +299,10 @@
 										<label class="col-sm-4 col-form-label d-flex">Address : </label>
 										<div class="d-flex justify-content-start">
 											<div class="col-sm-9">
-												<input type="text" name="eastreet" value="<?php echo $a_street; ?>" required placeholder="Street Name" class="form-control" id="eastreet" title="Text only no house numbers" pattern="[a-zA-Z]*"/>
+												<input type="text" name="eastreet" value="<?php echo $a_street; ?>" required placeholder="Street Name" class="form-control" id="eastreet"/>
 											</div>
 											<div class="col-sm-6">
-												<input type="text" name="eazip" value="<?php echo $a_zip; ?>" pattern="[0-9]{5}" title="Five digit zip code" required placeholder="Zip Code" class="form-control" id="eazip"/>
+												<input type="text" name="eazip" value="<?php echo $a_zip; ?>" required placeholder="Zip Code" class="form-control" id="eazip"/>
 											</div>
 										</div>
 									</div>

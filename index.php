@@ -39,7 +39,7 @@
     }
     .editor.price-start p {
         position: absolute;
-        top: 55% !important;
+        top: 240px !important;
         left: 0px;
         /*background-color: #2a2a2a;*/
         background-color: #30c0a3;
@@ -107,11 +107,41 @@
                                     <div class="col-lg-12">
                                         <label>
                                             <p class="text-light">Check In Date</p>
-                                            <input type="date" class="form-control accommodation" min="2018-12-20" name="checkin" placeholder="Check In Date">
+                                            <input type="date" class="form-control accommodation" id="checkindate" name="checkin" placeholder="Check In Date">
+                                            <script type="text/javascript">
+                                                var today = new Date();
+                                                var dd = today.getDate();
+                                                var mm = today.getMonth()+1; //January is 0!
+                                                var yyyy = today.getFullYear();
+                                                 if(dd<10){
+                                                        dd='0'+dd
+                                                    } 
+                                                    if(mm<10){
+                                                        mm='0'+mm
+                                                    } 
+
+                                                today = yyyy+'-'+mm+'-'+dd;
+                                                document.getElementById("checkindate").setAttribute("min", today);
+                                            </script>
                                         </label>&nbsp;
                                         <label>
                                             <p class="text-light">Check Out Date</p>
-                                            <input type="date" class="form-control accommodation" min="2018-12-24" name="checkout" placeholder="Check Out Date">
+                                            <input type="date" class="form-control accommodation" id="checkoutdate" name="checkout" placeholder="Check Out Date">
+                                            <script type="text/javascript">
+                                                var today = new Date();
+                                                var dd = today.getDate();
+                                                var mm = today.getMonth()+1; //January is 0!
+                                                var yyyy = today.getFullYear();
+                                                 if(dd<10){
+                                                        dd='0'+dd
+                                                    } 
+                                                    if(mm<10){
+                                                        mm='0'+mm
+                                                    } 
+
+                                                today = yyyy+'-'+mm+'-'+dd;
+                                                document.getElementById("checkoutdate").setAttribute("min", today);
+                                            </script>
                                         </label>&nbsp;
                                         <label>
                                             <p class="text-light">Filter by Categories</p>
@@ -182,7 +212,7 @@
                         </div>
                         <!-- Single Catagory Area -->
                         <div class="col-12 col-sm-6 col-md">
-                            <a href="transportation.php">
+                            <a href="transportAPI/transport.php" target="_blank">
                                 <div class="single-catagory-area wow fadeInUpBig" data-wow-delay="0.24s">
                                     <div class="catagory-content">
                                         <img src="" alt="">
@@ -268,7 +298,7 @@
                                             </div>
                                             <!-- Price -->
                                             <div class="price-start">
-                                                <a href="adventures.php?filter%5B%5D=<?php echo $data['group_size']; ?>"><p><?php echo $data['group_size']; ?> Type</p></a>
+                                                <a href="adventures.php?filter%5B%5D=<?php echo $data['group_size']; ?>"><p style="max-width: 200px; text-overflow: ellipsis; white-space: nowrap;overflow: hidden;"><?php echo $data['group_size']; ?> Type</p></a>
                                                 <a href="#" class="rate"><?php echo round($data_r['rating'], PHP_ROUND_HALF_UP); ?></a>
                                             </div>
                                             
@@ -337,7 +367,7 @@
                                 </div>
                                 <!-- Price -->
                                 <div class="price-start editor">
-                                    <a href="adventures.php?filter%5B%5D=<?php echo $data['group_size']; ?>"><p><?php echo $data['group_size']; ?> Type</p></a>
+                                    <a href="adventures.php?filter%5B%5D=<?php echo $data['group_size']; ?>"><p style="max-width: 200px; text-overflow: ellipsis; white-space: nowrap;overflow: hidden;"><?php echo $data['group_size']; ?> Type</p></a>
                                 </div>
                                 <div class="feature-content d-flex align-items-center justify-content-between">
                                     <div class="feature-title">
@@ -376,17 +406,51 @@
         <div class="row">
             <?php 
                 $cn=makeconnection();
-                $s_e="SELECT * FROM event LIMIT 6";
+                $s_e="SELECT * FROM event LIMIT 4";
                 $q_e=mysqli_query($cn, $s_e);
                 $n_e=mysqli_num_rows($q_e);
                 if ($n_e <= 0) {
                     echo "<h1 class='text-center text-light'>No Events to show.</h1>";
                 } else {
                     while ($d_e = mysqli_fetch_array($q_e)) { ?>
+                        <style type="text/css">
+                            img.event-image {
+                                height: 180px;
+                                width: 170px;
+                            }
+                            div#des {
+                                width: 19em;
+                            }
+                            @media only screen and (max-width: 600px) {
+                                img.event-image {
+                                    height: auto;
+                                    width: 100%;
+                                }
+                                div#des {
+                                    width: 15em;
+                                }
+                            }
+                            @media (min-width: 768px) and (max-width: 1023px) {
+                                img.event-image {
+                                    height: 180px;
+                                    width: 170px;
+                                }
+                                div#des {
+                                    width: 24em;
+                                }
+                            }
+                            @media (min-width: 1024px) and (max-width: 1365px) {
+                                div#des {
+                                    width: 14em;
+                                }
+                            }
+                        </style>
                         <div class="col-12 col-lg-6 mt-5">
                             <div class="single-feature-events-area d-sm-flex align-items-center wow fadeInUpBig" data-wow-delay="0.1s">
                                 <div class="feature-events-thumb">
-                                    <img src="uploads/<?php echo $d_e['image']; ?>" alt="image">
+                                    <div id="rated-adv">
+                                        <img src="uploads/<?php echo $d_e['image']; ?>" alt="image" class="event-image">
+                                    </div>
                                     <div class="date-map-area d-flex">
                                         <a class="text-light"><?php echo date('d M', strtotime($d_e['date_added'])); ?></a>
                                         <a href="http://maps.google.com/maps?daddr=<?php echo $d_e['street']; ?>&amp;ll=" target="_blank"><img src="assets/map.png" alt="map"></a>
@@ -395,7 +459,9 @@
                                 <div class="feature-events-content">
                                     <a href="events.php?e_id=<?php echo $d_e['id']; ?>"><h5><?php echo $d_e['title']; ?></h5></a>
                                     <h6><?php echo $d_e['street']; ?></h6>
-                                    <p style="width: 100%; text-overflow: ellipsis; white-space: nowrap; overflow: hidden;"><?php echo $d_e['description']; ?></p>
+                                    <div style="text-overflow: ellipsis; white-space: nowrap;overflow: hidden;" id="des">
+                                        <?php echo $d_e['description']; ?>
+                                    </div>
                                 </div>
                                 <div class="feature-events-details-btn">
                                     <a href="events.php?e_id=<?php echo $d_e['id']; ?>">+</a>

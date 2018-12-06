@@ -77,6 +77,12 @@
     <div class="container-fluid h-100">
         <div class="row h-100 align-items-center justify-content-center">
             <div class="col-12 col-md-10">
+                <?php if ($msgl != ''): ?>
+                    <div class="alert <?php echo $msglClass; ?> text-center col-lg-10 offset-lg-1 alert-dismissable" id="flash-msg">
+                        <?php echo $msgl; ?>
+                        <button aria-hidden="true" data-dismiss="alert" class="close" type="button">&times;</button>
+                    </div>
+                <?php endif; ?>
                 <div class="hero-content">
                     <h2 style="font-family: 'Poiret One', cursive;">Find Accommodation</h2>
                     <h4 style="font-family: 'Cormorant Upright', cursive;">From cosy country homes to funky city flats</h4>
@@ -98,11 +104,41 @@
                                     <div class="col-lg-12">
                                         <label>
                                             <p class="text-light">Check In Date</p>
-                                            <input type="date" class="form-control accommodation" min="2018-12-20" name="checkin" placeholder="Check In Date">
+                                            <input type="date" class="form-control accommodation" id="checkindate" name="checkin" placeholder="Check In Date">
+                                            <script type="text/javascript">
+                                                var today = new Date();
+                                                var dd = today.getDate();
+                                                var mm = today.getMonth()+1; //January is 0!
+                                                var yyyy = today.getFullYear();
+                                                 if(dd<10){
+                                                        dd='0'+dd
+                                                    } 
+                                                    if(mm<10){
+                                                        mm='0'+mm
+                                                    } 
+
+                                                today = yyyy+'-'+mm+'-'+dd;
+                                                document.getElementById("checkindate").setAttribute("min", today);
+                                            </script>
                                         </label>&nbsp;
                                         <label>
                                             <p class="text-light">Check Out Date</p>
-                                            <input type="date" class="form-control accommodation" min="2018-12-24" name="checkout" placeholder="Check Out Date">
+                                            <input type="date" class="form-control accommodation" id="checkoutdate" name="checkout" placeholder="Check Out Date">
+                                            <script type="text/javascript">
+                                                var today = new Date();
+                                                var dd = today.getDate();
+                                                var mm = today.getMonth()+1; //January is 0!
+                                                var yyyy = today.getFullYear();
+                                                 if(dd<10){
+                                                        dd='0'+dd
+                                                    } 
+                                                    if(mm<10){
+                                                        mm='0'+mm
+                                                    } 
+
+                                                today = yyyy+'-'+mm+'-'+dd;
+                                                document.getElementById("checkoutdate").setAttribute("min", today);
+                                            </script>
                                         </label>&nbsp;
                                         <label>
                                             <p class="text-light">Filter by Categories</p>

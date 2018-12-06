@@ -64,6 +64,12 @@
 
 <section class="bg-img bg-overlay" style="background-image: url(assets/bridge.jpg); background-attachment: fixed;">
 	<div class="container h-100">
+		<?php if ($msgl != ''): ?>
+            <div class="alert <?php echo $msglClass; ?> text-center col-lg-10 offset-lg-1 alert-dismissable" id="flash-msg">
+                <?php echo $msgl; ?>
+                <button aria-hidden="true" data-dismiss="alert" class="close" type="button">&times;</button>
+            </div>
+        <?php endif; ?>
 		<div class="row no-gutters slider-text align-items-center justify-content-center">
 			<div class="col-md-12 text-center breadcrumb-fade">
 				<p class="breadcrumbs wow fadeInUpBig" data-wow-delay="0.08s"><span class="mr-2"><a href="index.php">Home</a></span> <span>About</span></p>
@@ -140,16 +146,16 @@
 	            <article class="material-card Green">
 	                <h2>
 	                    <span>Nils Visser</span>
-						<p class="text-light">Leader/</p>
+						<p class="text-light">Leader/Developer</p>
 	                </h2>
 	                <div class="mc-content">
 	                    <div class="img-container">
-	                        <img class="img-responsive" src="assets/nils.jpeg">
+	                        <img class="img-responsive" src="assets/nils.jpg">
 	                    </div>
 	                    <div class="mc-description">
-	                        <strong>Main Role : </strong>Front-End Developer <br>
+	                        <strong>Main Role : </strong>Team Leader <br>
 	                        <strong>Secondary Role : </strong>Back-End Developer <br>
-	                        <strong>Other Role : </strong>Designer
+	                        <strong>Other Role : </strong>Database Designer
 	                    </div>
 	                </div>
 	                <a class="mc-btn-action">
@@ -181,7 +187,7 @@
 	                    <div class="mc-description">
 	                        <strong>Main Role : </strong>Front-End Developer <br>
 	                        <strong>Secondary Role : </strong>Back-End Developer <br>
-	                        <strong>Other Role : </strong>Designer
+	                        <strong>Other Role : </strong>Web Designer
 	                    </div>
 	                </div>
 	                <a class="mc-btn-action">
@@ -203,16 +209,16 @@
 	            <article class="material-card Orange">
 	                <h2>
 	                    <span>Sander Krom</span>
-						<p class="text-light">The Deer Hunter</p>
+						<p class="text-light">Lead Tester/Developer</p>
 	                </h2>
 	                <div class="mc-content">
 	                    <div class="img-container">
-	                        <img class="img-responsive" src="assets/sander.jpeg">
+	                        <img class="img-responsive" src="assets/sander.jpg">
 	                    </div>
 	                    <div class="mc-description">
-	                        <strong>Main Role : </strong>Front-End Developer <br>
+	                        <strong>Main Role : </strong>Lead Tester <br>
 	                        <strong>Secondary Role : </strong>Back-End Developer <br>
-	                        <strong>Other Role : </strong>Designer
+	                        <strong>Other Role : </strong>......
 	                    </div>
 	                </div>
 	                <a class="mc-btn-action">
@@ -233,11 +239,11 @@
 	            <article class="material-card Orange">
 	                <h2>
 	                    <span>Suman Nepali</span>
-						<p class="text-light">The Deer Hunter</p>
+						<p class="text-light">Developer/Designer</p>
 	                </h2>
 	                <div class="mc-content">
 	                    <div class="img-container">
-	                        <img class="img-responsive" src="assets/suman.jpeg">
+	                        <img class="img-responsive" src="assets/suman.jpg">
 	                    </div>
 	                    <div class="mc-description">
 	                        <strong>Main Role : </strong>Front-End Developer <br>
@@ -263,16 +269,16 @@
 	            <article class="material-card Orange">
 	                <h2>
 	                    <span>Johannes Fahringer</span>
-						<p class="text-light">The Deer Hunter</p>
+						<p class="text-light">Lead Back-End Developer</p>
 	                </h2>
 	                <div class="mc-content">
 	                    <div class="img-container">
-	                        <img class="img-responsive" src="assets/johannes.jpeg">
+	                        <img class="img-responsive" src="assets/johannes.jpg">
 	                    </div>
 	                    <div class="mc-description">
-	                        <strong>Main Role : </strong>Front-End Developer <br>
-	                        <strong>Secondary Role : </strong>Back-End Developer <br>
-	                        <strong>Other Role : </strong>Designer
+	                        <strong>Main Role : </strong>Back-End Developer <br>
+	                        <strong>Secondary Role : </strong>Front-End Developer <br>
+	                        <strong>Other Role : </strong>.......
 	                    </div>
 	                </div>
 	                <a class="mc-btn-action">
@@ -293,16 +299,16 @@
 	            <article class="material-card Orange">
 	                <h2>
 	                    <span>Zixuan Chen</span>
-						<p class="text-light">The Deer Hunter</p>
+						<p class="text-light">Developer/Documenter</p>
 	                </h2>
 	                <div class="mc-content">
 	                    <div class="img-container">
-	                        <img class="img-responsive" src="assets/zixuan.jpeg">
+	                        <img class="img-responsive" src="assets/zixuan.jpg">
 	                    </div>
 	                    <div class="mc-description">
 	                        <strong>Main Role : </strong>Front-End Developer <br>
-	                        <strong>Secondary Role : </strong>Back-End Developer <br>
-	                        <strong>Other Role : </strong>Designer
+	                        <strong>Secondary Role : </strong>Documenter <br>
+	                        <strong>Other Role : </strong>Researcher
 	                    </div>
 	                </div>
 	                <a class="mc-btn-action">
@@ -323,16 +329,16 @@
 	            <article class="material-card Orange">
 	                <h2>
 	                    <span>Jenny K. Kristiansen</span>
-						<p class="text-light">The Deer Hunter</p>
+						<p class="text-light">Lead Designer/Documenter</p>
 	                </h2>
 	                <div class="mc-content">
 	                    <div class="img-container">
-	                        <img class="img-responsive" src="assets/jenny.jpeg">
+	                        <img class="img-responsive" src="assets/jenny.jpg">
 	                    </div>
 	                    <div class="mc-description">
-	                        <strong>Main Role : </strong>Front-End Developer <br>
-	                        <strong>Secondary Role : </strong>Back-End Developer <br>
-	                        <strong>Other Role : </strong>Designer
+	                        <strong>Main Role : </strong>Lead Designer <br>
+	                        <strong>Secondary Role : </strong>Documenter <br>
+	                        <strong>Other Role : </strong>Researcher
 	                    </div>
 	                </div>
 	                <a class="mc-btn-action">

@@ -1,3 +1,4 @@
+
 <?php
 /**
  * Created by PhpStorm.
@@ -105,3 +106,4 @@ if(isset($_GET['submit'])) {
     ?>
 
 
+<meta http-equiv="refresh" content="3; url=http://sarojbartaula.com.np">

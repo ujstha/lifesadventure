@@ -4,13 +4,11 @@
 <?php include('inc/head.php'); ?>
 
 <title>lifesadventure | Add Adventures</title>
+<?php include('inc/header.php'); ?>
 <!-- ADD ADVENTURES -->
 <?php
-	if($_SESSION['loginstatus']=="") {
-
-		header("location:admin-login.php");
-
-	} else {
+	$cn=makeconnection();
+	if(isset($_SESSION['loginstatus']) && isset($_SESSION['adminlogin'])) {
 		$imgMsg = '';
 		$imgMsgClass = '';
 		if(isset($_POST["submit"])) {
@@ -173,9 +171,11 @@
 			} 
 			mysqli_close($cn);
 		}
+	} else {
+		echo "<script>alert('Please Sign In to add adventures.');</script>";
+		echo "<script>document.location = 'admin-login.php';</script>";
 	}
 ?>
-<?php include('inc/header.php'); ?>
 <!-- /ADD ADVENTURES -->
 <style type="text/css">
 	.modal-content {

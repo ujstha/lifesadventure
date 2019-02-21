@@ -224,7 +224,7 @@
                             <div class="dorne-search-btn">
                                 <a id="search-btn" href="#"><i class="fa fa-search" aria-hidden="true"></i> Search</a>
                             </div>
-                            <?php if(isset($_SESSION['adminuser'])) {?>
+                            <?php if(isset($_SESSION['loginstatus']) && isset($_SESSION['adminlogin'])) {?>
                                 <li class="nav-item dropdown">
                                     <a class="nav-link dropdown-toggle" href="#" id="signedin" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                         <span><i class="fas fa-user"></i></span> &nbsp; Admin <i class="fa fa-angle-down" aria-hidden="true"></i>

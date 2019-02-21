@@ -18,6 +18,7 @@
 		$data=mysqli_fetch_array($q);
 		mysqli_close($cn);
 		if($r>0) {
+			$_SESSION['adminlogin']=$_POST["username"];
 			$_SESSION['loginstatus']="yes";	
 			echo "<script type='text/javascript'> document.location = 'index.php'; </script>";
 		} else {
